@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
+
+    protected $appends = ['technologies'];
+
+    public function technologies() {
+        return $this->belongsToMany(Technology::class);
+    }
+
+    public function getTechnologiesAttribute() {
+        return $this->technologies()->get(['name', 'logo']);
+    }
 }

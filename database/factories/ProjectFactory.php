@@ -31,7 +31,6 @@ class ProjectFactory extends Factory
             'title' => $this->faker->realText(20, 1),
             'text' => $this->faker->realText(300, 4),
             'image' => '',
-            'technologies' => '{}',
             'color' => $rgb,
             'link' => '#',
         ];

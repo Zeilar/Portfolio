@@ -18,7 +18,6 @@ class CreateProjectsTable extends Migration
             $table->string('title');
             $table->text('text');
             $table->string('image');
-            $table->json('technologies');
             $table->string('color');
             $table->string('link');
             $table->timestamps();

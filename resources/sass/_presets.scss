@@ -14,8 +14,18 @@ body {
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
     color: rgb(30, 30, 30);
+    min-height: 100vh;
+}
+
+#app {
+    height: 100%;
 }
 
 img {
     max-width: 100%;
+}
+
+svg {
+    height: 100%;
+    width: 100%;
 }

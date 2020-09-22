@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body>
-        <div id="app"></div>
+        <main id="app"></main>
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

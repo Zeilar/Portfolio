@@ -1,29 +1,36 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { createUseStyles } from 'react-jss';
 
-export default function Project({ title, link, image, text, technologies }) {
+export default function Project({ project }) {
+    const styles = createUseStyles({
+        project: {
+
+        },
+        technologies: {
+            border: '1px solid red',
+        },
+        technology: {
+
+        },
+        technologyIcon: {
+            display: 'flex',
+            height: '50px',
+            width: '50px',
+        },
+    });
+    const classes = styles();
+
     return (
-        <h1>A project</h1>
-        // <article className="project">
-        //     <div className="previewWrapper">
-        //         <a className="preview" href="#">
-        //             <img className="previewImage" src={image} alt="Project preview" />
-        //             <span className="previewLink">Visit</span>
-        //         </a>
-        //     </div>
-        //     <div className="description">
-
-        //     </div>
-        // </article>
-
-        //         {projects.map(data => (
-        //     <Project 
-        //         key={Math.random()}
-        //         text={data.text}
-        //         image={data.image}
-        //         link={data.link}
-        //         color={data.color} 
-        //         title={data.title}
-        //     />
-        // ))}
+        <article className={classes.project}>
+            <div className={classes.technologies}>
+                {
+                    project.technologies.map(technology => (
+                        <div className={classes.technology} key={Math.random()}>
+                            <span className={classes.technologyIcon} dangerouslySetInnerHTML={{ __html: technology.logo }} title={technology.name} />
+                        </div>
+                    ))
+                }
+            </div>
+        </article>
     );
 }
