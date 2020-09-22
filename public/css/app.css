@@ -38,6 +38,24 @@ body {
   height: 100%;
 }
 
+*::-moz-placeholder {
+  -moz-user-select: none;
+       user-select: none;
+}
+
+*:-ms-input-placeholder {
+  -ms-user-select: none;
+      user-select: none;
+}
+
+img,
+*::placeholder {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 img {
   max-width: 100%;
 }

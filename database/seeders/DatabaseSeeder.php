@@ -40,7 +40,21 @@ class DatabaseSeeder extends Seeder
         Technology::create(['name' => 'Docker', 'logo' => file_get_contents(storage_path('app\public\technologies\docker.svg'))]);
         Technology::create(['name' => 'Git', 'logo' => file_get_contents(storage_path('app\public\technologies\git.svg'))]);
 
-        Project::factory(5)->create()->each(function($project) {
+        $query = Technology::query();
+        collect(['PHP', 'JavaScript', 'CSS', 'HTML', 'SASS', 'Laravel', 'React', 'MySQL'])->each(function (string $name) use ($query) {
+            $query->orWhere('name', $name);
+        });
+        $technologies = $query->pluck('id');
+        $project = Project::create([
+            'title' => 'Z-Forum',
+            'description' => '',
+            'image' => '',
+            'color' => '',
+            'link' => 'https://zforum.angelin.dev',
+        ]);
+        $project->technologies()->sync($technologies);
+
+        Project::factory(3)->create()->each(function($project) {
             $randomTechnologies = Technology::inRandomOrder()->limit(rand(1, 5))->pluck('id');            
             $project->technologies()->sync($randomTechnologies);
         });

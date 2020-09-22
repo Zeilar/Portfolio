@@ -21,6 +21,10 @@ body {
     height: 100%;
 }
 
+img, *::placeholder {
+    user-select: none;
+}
+
 img {
     max-width: 100%;
 }

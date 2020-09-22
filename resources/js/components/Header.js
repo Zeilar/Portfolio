@@ -33,7 +33,7 @@ export default function Header() {
             position: 'relative',
             padding: '20px 10px',
             '&::after': {
-                transition: 'width 0.25s ease-out',
+                transition: 'width 0.15s ease-out',
                 background: 'var(--color-primary)',
                 position: 'absolute',
                 content: '""',

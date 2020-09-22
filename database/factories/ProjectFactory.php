@@ -28,11 +28,11 @@ class ProjectFactory extends Factory
         $rgb = "rgb($r, $g, $b)";
 
         return [
-            'title' => $this->faker->realText(20, 1),
-            'text' => $this->faker->realText(300, 4),
-            'image' => '',
-            'color' => $rgb,
-            'link' => '#',
+            'title'       => $this->faker->realText(20, 1),
+            'description' => $this->faker->realText(800, 5),
+            'image'       => '',
+            'color'       => $rgb,
+            'link'        => '#',
         ];
     }
 }
