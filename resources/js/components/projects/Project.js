@@ -6,20 +6,25 @@ export default function Project({ project }) {
         project: {
             display: 'flex',
             padding: '50px',
+            gap: '50px',
+            '&:nth-child(even)': {
+                'flex-direction': 'row-reverse',
+            },
         },
         preview: {
             'flex-direction': 'column',
-            'margin-right': '50px',
             display: 'flex',
             flex: 1,
         },
         previewImageWrapper: {
+            'box-shadow': '0 0 25px 0 rgba(0, 0, 0, 0.25)',
             position: 'relative',
+            'font-size': 0,
         },
         previewImage: {
             transition: 'filter 0.1s linear',
             '&:hover': {
-                filter: 'blur(3px)',
+                filter: 'blur(3px) grayscale(100%)',
             },
             '&:hover ~ span': {
                 opacity: 1,
@@ -29,11 +34,14 @@ export default function Project({ project }) {
         previewImageText: {
             transition: 'opacity 0.1s linear, top 0.25s linear',
             transform: 'translate(-50%, -50%)',
+            background: 'rgba(0, 0, 0, 0.5)',
+            'text-transform': 'uppercase',
             'pointer-events': 'none',
             'letter-spacing': '3px',
             'font-family': 'Julius',
             position: 'absolute',
             'font-size': '2rem',
+            padding: '10px',
             color: 'white',
             left: '50%',
             opacity: 0,

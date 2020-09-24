@@ -10,6 +10,7 @@ export default function Header() {
             padding: '20px 25vw',
             background: 'white',
             position: 'sticky',
+            'z-index': '100',
             display: 'flex',
             top: 0,
             '&.background': {

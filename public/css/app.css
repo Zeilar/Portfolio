@@ -84,6 +84,11 @@ svg {
   src: url(/fonts/Roboto-Regular.ttf?11eabca2251325cfc5589c9c6fb57b46);
 }
 
+@font-face {
+  font-family: 'Barlow';
+  src: url(/fonts/Barlow-Regular.ttf?2cce8c806c2d2e03adc2b239ae316b76);
+}
+
 a,
 a:visited {
   color: var(--color-link);

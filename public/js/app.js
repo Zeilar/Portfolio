@@ -102656,6 +102656,7 @@ function Header() {
       padding: '20px 25vw',
       background: 'white',
       position: 'sticky',
+      'z-index': '100',
       display: 'flex',
       top: 0,
       '&.background': {
@@ -102723,7 +102724,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 72,
       columnNumber: 9
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
@@ -102731,7 +102732,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72,
+      lineNumber: 73,
       columnNumber: 13
     }
   }, "Philip Angelin"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("nav", {
@@ -102739,7 +102740,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75,
+      lineNumber: 76,
       columnNumber: 13
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
@@ -102747,7 +102748,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
+      lineNumber: 77,
       columnNumber: 17
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
@@ -102755,7 +102756,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77,
+      lineNumber: 78,
       columnNumber: 21
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
@@ -102765,7 +102766,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78,
+      lineNumber: 79,
       columnNumber: 25
     }
   }, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
@@ -102773,7 +102774,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82,
+      lineNumber: 83,
       columnNumber: 21
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
@@ -102783,7 +102784,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83,
+      lineNumber: 84,
       columnNumber: 25
     }
   }, "Projects")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
@@ -102791,7 +102792,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87,
+      lineNumber: 88,
       columnNumber: 21
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
@@ -102801,7 +102802,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88,
+      lineNumber: 89,
       columnNumber: 25
     }
   }, "About")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
@@ -102809,7 +102810,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92,
+      lineNumber: 93,
       columnNumber: 21
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
@@ -102819,7 +102820,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93,
+      lineNumber: 94,
       columnNumber: 25
     }
   }, "Contact")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Button"], {
@@ -102828,7 +102829,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 100,
       columnNumber: 13
     }
   }, "Primary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Button"], {
@@ -102837,7 +102838,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102,
+      lineNumber: 103,
       columnNumber: 13
     }
   }, "Secondary"));
@@ -102951,21 +102952,26 @@ function Project(_ref) {
   var styles = Object(react_jss__WEBPACK_IMPORTED_MODULE_1__["createUseStyles"])({
     project: {
       display: 'flex',
-      padding: '50px'
+      padding: '50px',
+      gap: '50px',
+      '&:nth-child(even)': {
+        'flex-direction': 'row-reverse'
+      }
     },
     preview: {
       'flex-direction': 'column',
-      'margin-right': '50px',
       display: 'flex',
       flex: 1
     },
     previewImageWrapper: {
-      position: 'relative'
+      'box-shadow': '0 0 25px 0 rgba(0, 0, 0, 0.25)',
+      position: 'relative',
+      'font-size': 0
     },
     previewImage: {
       transition: 'filter 0.1s linear',
       '&:hover': {
-        filter: 'blur(3px)'
+        filter: 'blur(3px) grayscale(100%)'
       },
       '&:hover ~ span': {
         opacity: 1,
@@ -102975,11 +102981,14 @@ function Project(_ref) {
     previewImageText: {
       transition: 'opacity 0.1s linear, top 0.25s linear',
       transform: 'translate(-50%, -50%)',
+      background: 'rgba(0, 0, 0, 0.5)',
+      'text-transform': 'uppercase',
       'pointer-events': 'none',
       'letter-spacing': '3px',
       'font-family': 'Julius',
       position: 'absolute',
       'font-size': '2rem',
+      padding: '10px',
       color: 'white',
       left: '50%',
       opacity: 0,
@@ -103032,7 +103041,7 @@ function Project(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86,
+      lineNumber: 94,
       columnNumber: 9
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -103040,7 +103049,7 @@ function Project(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87,
+      lineNumber: 95,
       columnNumber: 13
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -103050,7 +103059,7 @@ function Project(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88,
+      lineNumber: 96,
       columnNumber: 17
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -103060,7 +103069,7 @@ function Project(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89,
+      lineNumber: 97,
       columnNumber: 21
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -103068,7 +103077,7 @@ function Project(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90,
+      lineNumber: 98,
       columnNumber: 21
     }
   }, "Visit"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -103076,7 +103085,7 @@ function Project(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95,
+      lineNumber: 103,
       columnNumber: 13
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -103084,7 +103093,7 @@ function Project(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96,
+      lineNumber: 104,
       columnNumber: 17
     }
   }, project.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -103092,7 +103101,7 @@ function Project(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99,
+      lineNumber: 107,
       columnNumber: 17
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -103100,7 +103109,7 @@ function Project(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100,
+      lineNumber: 108,
       columnNumber: 21
     }
   }, "Technologies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -103108,7 +103117,7 @@ function Project(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103,
+      lineNumber: 111,
       columnNumber: 21
     }
   }, project.technologies.map(function (technology) {
@@ -103118,7 +103127,7 @@ function Project(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 106,
+        lineNumber: 114,
         columnNumber: 33
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -103132,7 +103141,7 @@ function Project(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 107,
+        lineNumber: 115,
         columnNumber: 37
       }
     }));
