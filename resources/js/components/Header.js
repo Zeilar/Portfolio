@@ -69,7 +69,7 @@ export default function Header() {
     });
 
     return (
-        <header className={`${classes.header} ${hasBackground ? 'background' : ''}`} ref={header}>
+        <header className={`${classes.header}${hasBackground ? ' background' : ''}`} ref={header}>
             <span className={classes.brand}>
                 Philip Angelin
             </span>

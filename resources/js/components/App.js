@@ -17,7 +17,6 @@ export default function App() {
 
     useEffect(() => {
         if (user == null) authenticate();
-        console.log('user', user);
     }, [user, setUser]);
 
     return (

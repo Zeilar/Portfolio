@@ -1,11 +1,17 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { mdiArrowDownCircleOutline } from '@mdi/js';
 import { createUseStyles } from 'react-jss';
+import Icon from '@mdi/react';
 
-export default function Project({ project }) {
+export default function Project({ project, scrollToProject }) {
     const styles = createUseStyles({
         project: {
+            'justify-content': 'center',
+            'align-items': 'center',
+            'min-height': '100vh',
+            position: 'relative',
+            padding: '0 50px',
             display: 'flex',
-            padding: '50px',
             gap: '50px',
             '&:nth-child(even)': {
                 'flex-direction': 'row-reverse',
@@ -87,11 +93,22 @@ export default function Project({ project }) {
             height: '50px',
             width: '50px',
         },
+        scrollButton: {
+            transform: 'translateX(-50%)',
+            position: 'absolute',
+            bottom: '100px',
+            height: '40px',
+            width: '40px',
+            left: '50%',
+        },
+        scrollButtonIcon: {
+
+        },
     });
     const classes = styles();
 
     return (
-        <article className={classes.project}>
+        <article className={`${classes.project} project`}>
             <div className={classes.preview}>
                 <a className={classes.previewImageWrapper} href={project.link} target="_blank">
                     <img className={classes.previewImage} src={project.image} alt="Project preview" />
@@ -125,6 +142,10 @@ export default function Project({ project }) {
                     </div>
                 </div>
             </div>
+
+            <button className={`${classes.scrollButton} scrollButton`} onClick={() => scrollToProject(project)}>
+                <Icon className={classes.scrollButtonIcon} path={mdiArrowDownCircleOutline} />
+            </button>
         </article>
     );
 }

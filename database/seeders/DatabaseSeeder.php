@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
             ->each(fn(string $name) => $query->orWhere('name', $name));
         $project = Project::create([
             'title' => 'Tools',
-            'description' => 'This app was my first take on React. It features React Router and is served on an Apache server. This is meant mostly for personal use but others are free to make some use of it. Keep in mind this site is work in progress and may not even look like the image on the left currently.',
+            'description' => 'This app was my first take on React. It features React Router and is served on an Apache server. This is meant mostly for personal use but others are free to make some use of it. Keep in mind this site is work in progress and may not even look like the image on the side currently.',
             'image' => '/storage/projects_images/tools.png',
             'color' => '#00e676',
             'link' => 'https://tools.angelin.dev',
