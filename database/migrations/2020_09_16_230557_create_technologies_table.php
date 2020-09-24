@@ -16,7 +16,8 @@ class CreateTechnologiesTable extends Migration
         Schema::create('technologies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('logo');
+            $table->string('link');
+            $table->mediumText('logo');
         });
     }
 

@@ -102654,13 +102654,12 @@ function Header() {
     header: {
       transition: 'box-shadow 0.15s linear, background 0.15s linear',
       padding: '20px 25vw',
-      background: 'none',
+      background: 'white',
       position: 'sticky',
       display: 'flex',
       top: 0,
       '&.background': {
-        'box-shadow': '0 0 15px 0px rgba(0, 0, 0, 0.25)',
-        background: 'white'
+        'box-shadow': '0 0 15px 0px rgba(0, 0, 0, 0.25)'
       }
     },
     navbar: {
@@ -102724,7 +102723,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72,
+      lineNumber: 71,
       columnNumber: 9
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
@@ -102732,7 +102731,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73,
+      lineNumber: 72,
       columnNumber: 13
     }
   }, "Philip Angelin"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("nav", {
@@ -102740,7 +102739,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
+      lineNumber: 75,
       columnNumber: 13
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
@@ -102748,7 +102747,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77,
+      lineNumber: 76,
       columnNumber: 17
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
@@ -102756,7 +102755,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78,
+      lineNumber: 77,
       columnNumber: 21
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
@@ -102766,7 +102765,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 79,
+      lineNumber: 78,
       columnNumber: 25
     }
   }, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
@@ -102774,16 +102773,17 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83,
+      lineNumber: 82,
       columnNumber: 21
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
     className: classes.navlink,
     to: "/projects",
+    exact: true,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84,
+      lineNumber: 83,
       columnNumber: 25
     }
   }, "Projects")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
@@ -102791,16 +102791,17 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88,
+      lineNumber: 87,
       columnNumber: 21
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
     className: classes.navlink,
     to: "/about",
+    exact: true,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89,
+      lineNumber: 88,
       columnNumber: 25
     }
   }, "About")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
@@ -102808,16 +102809,17 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93,
+      lineNumber: 92,
       columnNumber: 21
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
     className: classes.navlink,
     to: "/contact",
+    exact: true,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94,
+      lineNumber: 93,
       columnNumber: 25
     }
   }, "Contact")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Button"], {
@@ -102826,7 +102828,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100,
+      lineNumber: 99,
       columnNumber: 13
     }
   }, "Primary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Button"], {
@@ -102835,7 +102837,7 @@ function Header() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103,
+      lineNumber: 102,
       columnNumber: 13
     }
   }, "Secondary"));
@@ -102949,25 +102951,75 @@ function Project(_ref) {
   var styles = Object(react_jss__WEBPACK_IMPORTED_MODULE_1__["createUseStyles"])({
     project: {
       display: 'flex',
-      padding: '10px'
+      padding: '50px'
     },
     preview: {
       'flex-direction': 'column',
+      'margin-right': '50px',
       display: 'flex',
       flex: 1
     },
+    previewImageWrapper: {
+      position: 'relative'
+    },
+    previewImage: {
+      transition: 'filter 0.1s linear',
+      '&:hover': {
+        filter: 'blur(3px)'
+      },
+      '&:hover ~ span': {
+        opacity: 1,
+        top: '50%'
+      }
+    },
+    previewImageText: {
+      transition: 'opacity 0.1s linear, top 0.25s linear',
+      transform: 'translate(-50%, -50%)',
+      'pointer-events': 'none',
+      'letter-spacing': '3px',
+      'font-family': 'Julius',
+      position: 'absolute',
+      'font-size': '2rem',
+      color: 'white',
+      left: '50%',
+      opacity: 0,
+      top: '55%'
+    },
     description: {
+      'justify-content': 'center',
       'flex-direction': 'column',
+      'align-items': 'center',
       display: 'flex',
       flex: 1
     },
     descriptionText: {
       'text-align': 'justify'
     },
-    technologies: {
+    technologiesWrapper: {
+      'flex-direction': 'column',
+      'margin-top': '60px',
       display: 'flex'
     },
-    technology: {},
+    technologies: {
+      'flex-wrap': 'wrap',
+      display: 'flex',
+      gap: '20px 0'
+    },
+    technology: {
+      transition: 'transform 0.25s linear',
+      margin: '0 10px',
+      '&:hover': {
+        transform: 'scale(1.1)'
+      }
+    },
+    technologiesText: {
+      'text-transform': 'uppercase',
+      'letter-spacing': '1px',
+      'margin-bottom': '15px',
+      'text-align': 'center',
+      'font-size': '0.75rem',
+      'font-weight': '600'
+    },
     technologyIcon: {
       display: 'flex',
       height: '50px',
@@ -102980,7 +103032,7 @@ function Project(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 86,
       columnNumber: 9
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -102988,33 +103040,76 @@ function Project(_ref) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 87,
       columnNumber: 13
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: classes.previewImage,
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: classes.previewImageWrapper,
+    href: project.link,
+    target: "_blank",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 88,
       columnNumber: 17
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: classes.previewImage,
     src: project.image,
     alt: "Project preview",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 89,
       columnNumber: 21
     }
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: classes.previewImageText,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 90,
+      columnNumber: 21
+    }
+  }, "Visit"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classes.description,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95,
+      columnNumber: 13
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: classes.descriptionText,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96,
+      columnNumber: 17
+    }
+  }, project.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classes.technologiesWrapper,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 99,
+      columnNumber: 17
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: classes.technologiesText,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 100,
+      columnNumber: 21
+    }
+  }, "Technologies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.technologies,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
-      columnNumber: 17
+      lineNumber: 103,
+      columnNumber: 21
     }
   }, project.technologies.map(function (technology) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -103023,39 +103118,25 @@ function Project(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 46,
-        columnNumber: 29
+        lineNumber: 106,
+        columnNumber: 33
       }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       className: classes.technologyIcon,
       dangerouslySetInnerHTML: {
         __html: technology.logo
       },
       title: technology.name,
+      href: technology.link,
+      target: "_blank",
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 47,
-        columnNumber: 33
+        lineNumber: 107,
+        columnNumber: 37
       }
     }));
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: classes.description,
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 57,
-      columnNumber: 13
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: classes.descriptionText,
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 58,
-      columnNumber: 17
-    }
-  }, project.description)));
+  })))));
 }
 
 /***/ }),

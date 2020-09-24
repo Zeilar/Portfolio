@@ -4,17 +4,6 @@
   --color-secondary: rgb(245, 0, 87);
 }
 
-a,
-a:visited {
-  color: var(--color-link);
-  text-decoration: none;
-}
-
-a:hover,
-a:visited:hover {
-  text-decoration: underline;
-}
-
 *,
 *::before,
 *::after {
@@ -63,5 +52,46 @@ img {
 svg {
   height: 100%;
   width: 100%;
+}
+
+@font-face {
+  font-family: 'Lobster';
+  src: url(/fonts/Lobster-Regular.ttf?9406d0ab606cf8cb91c41b65556bd836);
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  src: url(/fonts/Orbitron-VariableFont_wght.ttf?c641d3e90c64fcb82f8f5e2ac5317e98);
+}
+
+@font-face {
+  font-family: 'Righteous';
+  src: url(/fonts/Righteous-Regular.ttf?77fa00996ecb4104c7880b8749c7c4e0);
+}
+
+@font-face {
+  font-family: 'RussoOne';
+  src: url(/fonts/RussoOne-Regular.ttf?537d299a2fedf1a7541940cdbfa610d9);
+}
+
+@font-face {
+  font-family: 'Julius';
+  src: url(/fonts/JuliusSansOne-Regular.ttf?3dcf0ae6a78a6a64ae1e3f2406cefa3b);
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url(/fonts/Roboto-Regular.ttf?11eabca2251325cfc5589c9c6fb57b46);
+}
+
+a,
+a:visited {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover,
+a:visited:hover {
+  text-decoration: underline;
 }
 

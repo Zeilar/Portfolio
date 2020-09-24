@@ -17,7 +17,6 @@ class CreateProjectTechnologyTable extends Migration
             $table->id();
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('technology_id');
-            $table->timestamps();
         });
     }
 

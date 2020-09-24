@@ -8,13 +8,12 @@ export default function Header() {
         header: {
             transition: 'box-shadow 0.15s linear, background 0.15s linear',
             padding: '20px 25vw',
-            background: 'none',
+            background: 'white',
             position: 'sticky',
             display: 'flex',
             top: 0,
             '&.background': {
                 'box-shadow': '0 0 15px 0px rgba(0, 0, 0, 0.25)',
-                background: 'white',
             },
         },
         navbar: {
@@ -81,17 +80,17 @@ export default function Header() {
                         </NavLink>
                     </li>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/projects">
+                        <NavLink className={classes.navlink} to="/projects" exact>
                             Projects
                         </NavLink>
                     </li>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/about">
+                        <NavLink className={classes.navlink} to="/about" exact>
                             About
                         </NavLink>
                     </li>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/contact">
+                        <NavLink className={classes.navlink} to="/contact" exact>
                             Contact
                         </NavLink>
                     </li>

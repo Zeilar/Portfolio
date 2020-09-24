@@ -9,6 +9,8 @@ class Project extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $appends = ['technologies'];
 
     public function technologies() {
@@ -16,6 +18,6 @@ class Project extends Model
     }
 
     public function getTechnologiesAttribute() {
-        return $this->technologies()->get(['name', 'logo']);
+        return $this->technologies()->get();
     }
 }

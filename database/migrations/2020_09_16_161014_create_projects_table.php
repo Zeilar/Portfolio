@@ -20,7 +20,6 @@ class CreateProjectsTable extends Migration
             $table->string('image');
             $table->string('color');
             $table->string('link');
-            $table->timestamps();
         });
     }
 
