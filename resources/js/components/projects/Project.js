@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { mdiArrowDownCircleOutline } from '@mdi/js';
+import { mdiArrowDownCircleOutline, mdiChevronDoubleDown } from '@mdi/js';
 import { createUseStyles } from 'react-jss';
 import Icon from '@mdi/react';
 
@@ -8,13 +8,15 @@ export default function Project({ project, scrollToProject }) {
         project: {
             'justify-content': 'center',
             'align-items': 'center',
-            'min-height': '100vh',
+            padding: '200px 100px',
             position: 'relative',
-            padding: '0 50px',
             display: 'flex',
             gap: '50px',
             '&:nth-child(even)': {
                 'flex-direction': 'row-reverse',
+            },
+            '&:nth-child(odd)': {
+                background: 'rgb(250, 250, 250)',
             },
         },
         preview: {
@@ -40,7 +42,7 @@ export default function Project({ project, scrollToProject }) {
         previewImageText: {
             transition: 'opacity 0.1s linear, top 0.25s linear',
             transform: 'translate(-50%, -50%)',
-            background: 'rgba(0, 0, 0, 0.5)',
+            background: 'rgba(0, 0, 0, 0.65)',
             'text-transform': 'uppercase',
             'pointer-events': 'none',
             'letter-spacing': '3px',
@@ -61,7 +63,10 @@ export default function Project({ project, scrollToProject }) {
             flex: 1,
         },
         descriptionText: {
+            'letter-spacing': '1px',
             'text-align': 'justify',
+            'font-family': 'Roboto',
+            padding: '0 100px',
         },
         technologiesWrapper: {
             'flex-direction': 'column',
@@ -94,12 +99,18 @@ export default function Project({ project, scrollToProject }) {
             width: '50px',
         },
         scrollButton: {
+            border: '2px solid rgb(50, 50, 50)',
             transform: 'translateX(-50%)',
+            color: 'rgb(50, 50, 50)',
+            'border-radius': '50%',
             position: 'absolute',
-            bottom: '100px',
-            height: '40px',
-            width: '40px',
+            background: 'none',
+            cursor: 'pointer',
+            bottom: '20px',
+            height: '30px',
+            width: '30px',
             left: '50%',
+            outline: 0,
         },
         scrollButtonIcon: {
 
@@ -144,7 +155,7 @@ export default function Project({ project, scrollToProject }) {
             </div>
 
             <button className={`${classes.scrollButton} scrollButton`} onClick={() => scrollToProject(project)}>
-                <Icon className={classes.scrollButtonIcon} path={mdiArrowDownCircleOutline} />
+                <Icon className={classes.scrollButtonIcon} path={mdiChevronDoubleDown} />
             </button>
         </article>
     );
