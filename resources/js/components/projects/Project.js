@@ -65,7 +65,6 @@ export default function Project({ project, scrollToProject }) {
         descriptionText: {
             'letter-spacing': '1px',
             'text-align': 'justify',
-            'font-family': 'Roboto',
             padding: '0 100px',
         },
         technologiesWrapper: {

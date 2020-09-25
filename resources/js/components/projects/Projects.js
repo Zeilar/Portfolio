@@ -1,11 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
+import { mdiLoading } from '@mdi/js';
 import Project from './Project';
+import Icon from '@mdi/react';
 
 export default function Projects() {
     const styles = createUseStyles({
         projects: {
-            
+            'justify-content': 'center',
+            'flex-direction': 'column',
+            'align-items': 'center',
+            display: 'flex',
+            flex: 1,
         },
     });
     const classes = styles();
@@ -32,7 +38,11 @@ export default function Projects() {
 
     return (
         <div className={classes.projects} ref={projectsElements}>
-            {projects?.map(project => <Project key={project.id} scrollToProject={scrollToProject} project={project} />)}
+            {
+                projects?.length
+                    ? projects?.map(project => <Project key={project.id} scrollToProject={scrollToProject} project={project} />)
+                    : <Icon size={4} path={mdiLoading} spin={1} />
+            }
         </div>
     );
 }
