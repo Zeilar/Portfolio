@@ -9,7 +9,7 @@ use App\Models\Project;
 class DatabaseSeeder extends Seeder
 {
     private function getSvg(string $name = '', string $override = 'original-wordmark'): string {
-        return file_get_contents(storage_path("app\public\\technologies\\$name\\$name-$override.svg"));
+        return file_get_contents(storage_path("app/public/technologies/$name/$name-$override.svg"));
     }
 
     /**
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
         Technology::create(['name' => 'Git', 'link' => 'http://www.git-scm.com', 'logo' => $this->getSvg('git')]);
 
         $query = Technology::query();
-        collect(['PHP', 'JavaScript', 'CSS', 'HTML', 'SASS', 'Laravel', 'React', 'MySQL', 'Apache'])
+        collect(['PHP', 'JavaScript', 'jQuery', 'CSS', 'HTML', 'SASS', 'Laravel', 'MySQL', 'Apache'])
             ->each(fn(string $name) => $query->orWhere('name', $name));
         $project = Project::create([
             'title' => 'Z-Forum',

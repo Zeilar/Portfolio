@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 import { NavLink } from 'react-router-dom';
-import { Button } from '@material-ui/core';
 
 export default function Header() {
     const styles = createUseStyles({
@@ -97,12 +96,6 @@ export default function Header() {
                     </li>
                 </ul>
             </nav>
-            <Button color="primary" variant="contained">
-                Primary
-            </Button>
-            <Button color="secondary" variant="contained">
-                Secondary
-            </Button>
         </header>
     );
 }

@@ -8,7 +8,7 @@ export default function Project({ project, scrollToProject }) {
         project: {
             'justify-content': 'center',
             'align-items': 'center',
-            padding: '200px 100px',
+            padding: '150px 100px',
             position: 'relative',
             display: 'flex',
             gap: '50px',
@@ -40,7 +40,7 @@ export default function Project({ project, scrollToProject }) {
             }
         },
         previewImageText: {
-            transition: 'opacity 0.1s linear, top 0.25s linear',
+            transition: 'opacity 0.1s linear, top 0.2s linear',
             transform: 'translate(-50%, -50%)',
             background: 'rgba(0, 0, 0, 0.65)',
             'text-transform': 'uppercase',
@@ -87,11 +87,20 @@ export default function Project({ project, scrollToProject }) {
         },
         technologiesText: {
             'text-transform': 'uppercase',
+            'font-family': 'RussoOne',
             'letter-spacing': '1px',
-            'margin-bottom': '15px',
+            'margin-bottom': '10px',
             'text-align': 'center',
             'font-size': '0.75rem',
-            'font-weight': '600',
+            'font-weight': '100',
+        },
+        technologiesHr: {
+            background: 'linear-gradient(90deg, transparent 0%, black 50%, transparent 100%)',
+            'margin-bottom': '25px',
+            margin: '0 auto',
+            width: '100px',
+            height: '1px',
+            border: 0,
         },
         technologyIcon: {
             display: 'flex',
@@ -106,7 +115,7 @@ export default function Project({ project, scrollToProject }) {
             position: 'absolute',
             background: 'none',
             cursor: 'pointer',
-            bottom: '20px',
+            bottom: '30px',
             height: '30px',
             width: '30px',
             left: '50%',
@@ -136,6 +145,7 @@ export default function Project({ project, scrollToProject }) {
                     <p className={classes.technologiesText}>
                         Technologies
                     </p>
+                    <hr className={classes.technologiesHr} />
                     <div className={classes.technologies}>
                         {
                             project.technologies.map(technology => (
