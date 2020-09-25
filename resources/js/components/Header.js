@@ -64,6 +64,10 @@ export default function Header() {
     const [hasBackground, setHasBackground] = useState(false);
     const header = useRef();
 
+    function goToTop() {
+        window.scrollTo(0, 0);
+    }
+
     window.addEventListener('scroll', () => {
         setHasBackground(window.scrollY > header?.current?.getBoundingClientRect().height ? true : false);
     });
@@ -76,22 +80,22 @@ export default function Header() {
             <nav className={classes.navbar}>
                 <ul className={classes.navlist}>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/" exact>
+                        <NavLink className={classes.navlink} to="/" exact onClick={goToTop}>
                             Home
                         </NavLink>
                     </li>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/projects" exact>
+                        <NavLink className={classes.navlink} to="/projects" exact onClick={goToTop}>
                             Projects
                         </NavLink>
                     </li>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/about" exact>
+                        <NavLink className={classes.navlink} to="/about" exact onClick={goToTop}>
                             About
                         </NavLink>
                     </li>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/contact" exact>
+                        <NavLink className={classes.navlink} to="/contact" exact onClick={goToTop}>
                             Contact
                         </NavLink>
                     </li>
