@@ -9,9 +9,13 @@
     scroll-behavior: smooth;
 }
 
+::selection {
+    background: var(--color-secondary);
+}
+
 body {
-    color: rgb(30, 30, 30);
     font-family: 'Roboto';
+    color: black;
 }
 
 #app {

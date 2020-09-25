@@ -29,6 +29,7 @@ export default function Header() {
         },
         navlink: {
             color: 'var(--color-primary)',
+            'user-select': 'none',
             position: 'relative',
             padding: '20px 10px',
             '&::after': {

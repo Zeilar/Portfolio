@@ -1,1 +1,135 @@
-:root{--color-link:#007fff;--color-primary:#2196f3;--color-secondary:#f50057}*,:after,:before{box-sizing:border-box;list-style:none;padding:0;margin:0}:root{scroll-behavior:smooth}body{color:#1e1e1e;font-family:Roboto}#app{flex-direction:column;min-height:100vh;display:flex}::-moz-placeholder{-moz-user-select:none;user-select:none}:-ms-input-placeholder{-ms-user-select:none;user-select:none}::placeholder,img{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}img{max-width:100%}svg{height:100%;width:100%}@font-face{font-family:Lobster;src:url(/storage/fonts/Lobster-Regular.ttf)}@font-face{font-family:Orbitron;src:url(/storage/fonts/Orbitron-VariableFont_wght.ttf)}@font-face{font-family:Righteous;src:url(/storage/fonts/Righteous-Regular.ttf)}@font-face{font-family:RussoOne;src:url(/storage/fonts/RussoOne-Regular.ttf)}@font-face{font-family:Julius;src:url(/storage/fonts/JuliusSansOne-Regular.ttf)}@font-face{font-family:Roboto;src:url(/storage/fonts/Roboto-Regular.ttf)}@font-face{font-family:Barlow;src:url(/storage/fonts/Barlow-Regular.ttf)}a,a:visited{color:var(--color-link);text-decoration:none}a:hover,a:visited:hover{text-decoration:underline}.project:last-child .scrollButton{display:none}
+:root {
+  --color-link: rgb(0, 127, 255);
+  --color-primary: rgb(33, 150, 243);
+  --color-secondary: rgb(245, 0, 87);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  scroll-behavior: smooth;
+}
+
+::-moz-selection {
+  background: var(--color-secondary);
+}
+
+::selection {
+  background: var(--color-secondary);
+}
+
+body {
+  font-family: 'Roboto';
+  color: black;
+}
+
+#app {
+  flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+}
+
+*::-moz-placeholder {
+  -moz-user-select: none;
+       user-select: none;
+}
+
+*:-ms-input-placeholder {
+  -ms-user-select: none;
+      user-select: none;
+}
+
+img,
+*::placeholder {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+svg {
+  height: 100%;
+  width: 100%;
+}
+
+@font-face {
+  font-family: 'Lobster';
+  src: url("/storage/fonts/Lobster-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  src: url("/storage/fonts/Orbitron-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: 'Righteous';
+  src: url("/storage/fonts/Righteous-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'RussoOne';
+  src: url("/storage/fonts/RussoOne-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Julius';
+  src: url("/storage/fonts/JuliusSansOne-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("/storage/fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url("/storage/fonts/Barlow-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url("/storage/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("/storage/fonts/Raleway-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url("/storage/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/storage/fonts/Montserrat-Regular.ttf");
+}
+
+a,
+a:visited {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover,
+a:visited:hover {
+  text-decoration: underline;
+}
+
+.project:last-child .scrollButton {
+  display: none;
+}
+

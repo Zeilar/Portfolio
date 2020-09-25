@@ -27,6 +27,7 @@ export default function Project({ project, scrollToProject }) {
         previewImageWrapper: {
             'box-shadow': '0 0 25px 0 rgba(0, 0, 0, 0.25)',
             position: 'relative',
+            margin: '30px 0',
             'font-size': 0,
         },
         previewImage: {
@@ -47,6 +48,7 @@ export default function Project({ project, scrollToProject }) {
             'pointer-events': 'none',
             'letter-spacing': '3px',
             'font-family': 'Julius',
+            'user-select': 'none',
             position: 'absolute',
             'font-size': '2rem',
             padding: '10px',
@@ -63,16 +65,28 @@ export default function Project({ project, scrollToProject }) {
             flex: 1,
         },
         descriptionText: {
-            'letter-spacing': '1px',
+            'font-family': 'Poppins',
             'text-align': 'justify',
-            padding: '0 100px',
+            position: 'relative',
+            padding: '0 25%',
+        },
+        descriptionTextContent: {
+            position: 'relative',
+            'z-index': '5',
+        },
+        descriptionCanvas: {
+            transform: 'translate(-50%, -50%)',
+            'pointer-events': 'none',
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
         },
         technologiesWrapper: {
             'flex-direction': 'column',
-            'margin-top': '60px',
             display: 'flex',
         },
         technologies: {
+            'justify-content': 'center',
             'flex-wrap': 'wrap',
             display: 'flex',
             gap: '20px 0',
@@ -107,18 +121,25 @@ export default function Project({ project, scrollToProject }) {
             width: '50px',
         },
         scrollButton: {
-            border: '2px solid rgb(50, 50, 50)',
             transform: 'translateX(-50%)',
-            color: 'rgb(50, 50, 50)',
+            border: '2px solid black',
             'border-radius': '50%',
             position: 'absolute',
             background: 'none',
             cursor: 'pointer',
             bottom: '30px',
+            color: 'black',
             height: '30px',
             width: '30px',
             left: '50%',
             outline: 0,
+        },
+        title: {
+            'font-family': 'Montserrat',
+            'letter-spacing': '1px',
+            'text-align': 'center',
+            'font-size': '3rem',
+            'font-weight': 500,
         },
         scrollButtonIcon: {
 
@@ -129,17 +150,15 @@ export default function Project({ project, scrollToProject }) {
     return (
         <article className={`${classes.project} project`}>
             <div className={classes.preview}>
+                <h1 className={classes.title}>
+                    {project.title}
+                </h1>
                 <a className={classes.previewImageWrapper} href={project.link} target="_blank">
                     <img className={classes.previewImage} src={project.image} alt="Project preview" />
                     <span className={classes.previewImageText}>
                         Visit
                     </span>
                 </a>
-            </div>
-            <div className={classes.description}>
-                <p className={classes.descriptionText}>
-                    {project.description}
-                </p>
                 <div className={classes.technologiesWrapper}>
                     <p className={classes.technologiesText}>
                         Technologies
@@ -161,6 +180,12 @@ export default function Project({ project, scrollToProject }) {
                         }
                     </div>
                 </div>
+            </div>
+            <div className={classes.description}>
+                <p className={classes.descriptionText}>
+                    <span className={classes.descriptionTextContent} dangerouslySetInnerHTML={{ __html: project.description }} />
+                    <img className={classes.descriptionCanvas} src={`/storage/projects_canvas/${project.canvas}.png`} alt="Text background canvas" />
+                </p>
             </div>
 
             <button className={`${classes.scrollButton} scrollButton`} onClick={() => scrollToProject(project)}>
