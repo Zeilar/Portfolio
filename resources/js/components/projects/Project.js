@@ -179,11 +179,12 @@ export default function Project({ project, scrollToProject }) {
     });
     const classes = styles();
 
-    const [visible, setVisible] = useState();
+    const [visible, setVisible] = useState(sessionStorage.getItem('fadeProjects'));
     const projectElement = useRef();
 
     const fadeIn = useCallback(() => {
         if (visible == null && window.scrollY > (projectElement?.current?.offsetTop - window.screen.height / 2)) {
+            sessionStorage.setItem('fadeProjects', false);
             setVisible(true);
         }
     }, [visible, setVisible, projectElement]);
