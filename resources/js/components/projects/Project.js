@@ -8,9 +8,10 @@ export default function Project({ project, scrollToProject }) {
         project: {
             'justify-content': 'center',
             'align-items': 'center',
-            padding: '150px 100px',
             position: 'relative',
+            padding: '0 100px',
             display: 'flex',
+            height: '100vh',
             gap: '50px',
             '&:nth-child(even)': {
                 'flex-direction': 'row-reverse',
@@ -69,6 +70,7 @@ export default function Project({ project, scrollToProject }) {
             'text-align': 'justify',
             position: 'relative',
             padding: '0 25%',
+            color: 'white',
         },
         descriptionTextContent: {
             position: 'relative',
@@ -127,7 +129,7 @@ export default function Project({ project, scrollToProject }) {
             position: 'absolute',
             background: 'none',
             cursor: 'pointer',
-            bottom: '30px',
+            bottom: '80px',
             color: 'black',
             height: '30px',
             width: '30px',
