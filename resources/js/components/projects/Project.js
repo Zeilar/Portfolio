@@ -13,11 +13,31 @@ export default function Project({ project, scrollToProject }) {
             display: 'flex',
             height: '100vh',
             gap: '50px',
+            '& .preview, & .description': {
+                transition: 'all 0.5s ease-out',
+                opacity: 0,
+                '&.visible': {
+                    transform: 'translateX(0)',
+                    opacity: 1,
+                }
+            },
             '&:nth-child(even)': {
                 'flex-direction': 'row-reverse',
+                '& .preview': {
+                    transform: 'translateX(45px)',
+                },
+                '& .description': {
+                    transform: 'translateX(-45px)',
+                },
             },
             '&:nth-child(odd)': {
                 background: 'rgb(250, 250, 250)',
+                '& .preview': {
+                    transform: 'translateX(-45px)',
+                },
+                '& .description': {
+                    transform: 'translateX(45px)',
+                },
             },
         },
         preview: {
@@ -130,8 +150,8 @@ export default function Project({ project, scrollToProject }) {
             background: 'none',
             cursor: 'pointer',
             bottom: '80px',
-            color: 'black',
             height: '30px',
+            color: 'black',
             width: '30px',
             left: '50%',
             outline: 0,
@@ -159,9 +179,23 @@ export default function Project({ project, scrollToProject }) {
     });
     const classes = styles();
 
+    const [visible, setVisible] = useState();
+    const projectElement = useRef();
+
+    const fadeIn = useCallback(() => {
+        if (visible == null && window.scrollY > (projectElement?.current?.offsetTop - window.screen.height / 2)) {
+            setVisible(true);
+        }
+    }, [visible, setVisible, projectElement]);
+
+    useEffect(() => {
+        window.addEventListener('scroll', fadeIn);
+        fadeIn();
+    }, [visible, setVisible, projectElement, window]);
+
     return (
-        <article className={`${classes.project} project`}>
-            <div className={classes.preview}>
+        <article className={`${classes.project} project`} ref={projectElement}>
+            <div className={`${classes.preview} ${visible ? 'visible' : ''} preview`}>
                 <a className={classes.previewImageWrapper} href={project.link} target="_blank">
                     <img className={classes.previewImage} src={project.image} alt="Project preview" />
                     <span className={classes.previewImageText}>
@@ -190,15 +224,15 @@ export default function Project({ project, scrollToProject }) {
                     </div>
                 </div>
             </div>
-            <div className={classes.description}>
-                <p className={classes.descriptionText}>
+            <div className={`${classes.description} ${visible ? 'visible' : ''} description`}>
+                <div className={classes.descriptionText}>
                     <h1 className={classes.title}>
                         {project.title}
                     </h1>
                     <hr className={classes.descriptionHr} />
-                    <span className={classes.descriptionTextContent} dangerouslySetInnerHTML={{ __html: project.description }} />
+                    <p className={classes.descriptionTextContent} dangerouslySetInnerHTML={{ __html: project.description }} />
                     <img className={classes.descriptionCanvas} src={`/storage/projects_canvas/${project.canvas}.png`} alt="Text background canvas" />
-                </p>
+                </div>
             </div>
 
             <button className={`${classes.scrollButton} scrollButton`} onClick={() => scrollToProject(project)}>

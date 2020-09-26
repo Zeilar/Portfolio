@@ -1,7 +1,7 @@
 :root {
-  --color-link: rgb(0, 127, 255);
   --color-primary: rgb(33, 150, 243);
   --color-secondary: rgb(245, 0, 87);
+  --color-link: rgb(0, 127, 255);
 }
 
 *,
@@ -27,6 +27,7 @@
 
 body {
   font-family: 'Roboto';
+  overflow-x: hidden;
   color: black;
 }
 
