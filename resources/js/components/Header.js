@@ -28,32 +28,17 @@ export default function Header() {
             margin: '0 20px',
         },
         navlink: {
-            color: 'var(--color-primary)',
             'user-select': 'none',
             position: 'relative',
             padding: '20px 10px',
-            '&::after': {
-                transition: 'width 0.15s ease-out',
-                background: 'var(--color-primary)',
-                position: 'absolute',
-                content: '""',
-                height: '2px',
-                bottom: 0,
-                width: 0,
-                left: 0,
-            },
-            '&:hover::after, &.active::after': {
-                width: '100%',
-            },
+            color: 'black',
             '&:hover': {
+                color: 'var(--color-link)',
                 'text-decoration': 'none',
             },
             '&.active': {
-                color: 'var(--color-secondary)',
+                color: 'var(--color-link)',
             },
-            '&.active::after': {
-                background: 'var(--color-secondary)',
-            }
         },
         brand: {
             'align-self': 'center',
@@ -63,10 +48,6 @@ export default function Header() {
 
     const [hasBackground, setHasBackground] = useState(false);
     const header = useRef();
-
-    function goToTop() {
-        window.scrollTo(0, 0);
-    }
 
     window.addEventListener('scroll', () => {
         setHasBackground(window.scrollY > header?.current?.getBoundingClientRect().height ? true : false);
@@ -80,22 +61,22 @@ export default function Header() {
             <nav className={classes.navbar}>
                 <ul className={classes.navlist}>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/" exact onClick={goToTop}>
+                        <NavLink className={classes.navlink} to="/" exact>
                             Home
                         </NavLink>
                     </li>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/projects" exact onClick={goToTop}>
+                        <NavLink className={classes.navlink} to="/projects" exact>
                             Projects
                         </NavLink>
                     </li>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/about" exact onClick={goToTop}>
+                        <NavLink className={classes.navlink} to="/about" exact>
                             About
                         </NavLink>
                     </li>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/contact" exact onClick={goToTop}>
+                        <NavLink className={classes.navlink} to="/contact" exact>
                             Contact
                         </NavLink>
                     </li>

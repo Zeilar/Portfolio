@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 import { mdiLoading } from '@mdi/js';
 import Project from './Project';
+import Header from '../Header';
 import Icon from '@mdi/react';
 
 export default function Projects() {
@@ -37,12 +38,15 @@ export default function Projects() {
     }, [projects, setProjects]);
 
     return (
-        <div className={classes.projects} ref={projectsElements}>
-            {
-                projects?.length
-                    ? projects?.map(project => <Project key={project.id} scrollToProject={scrollToProject} project={project} />)
-                    : <Icon size={4} path={mdiLoading} spin={1} />
-            }
-        </div>
+        <>
+            <Header />
+            <div className={classes.projects} ref={projectsElements}>
+                {
+                    projects?.length
+                        ? projects?.map(project => <Project key={project.id} scrollToProject={scrollToProject} project={project} />)
+                        : <Icon size={4} path={mdiLoading} spin={1} />
+                }
+            </div>
+        </>
     );
 }

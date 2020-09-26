@@ -9,7 +9,7 @@ export default function Project({ project, scrollToProject }) {
             'justify-content': 'center',
             'align-items': 'center',
             position: 'relative',
-            padding: '0 100px',
+            padding: '0 50px',
             display: 'flex',
             height: '100vh',
             gap: '50px',
@@ -44,7 +44,7 @@ export default function Project({ project, scrollToProject }) {
         previewImageText: {
             transition: 'opacity 0.1s linear, top 0.2s linear',
             transform: 'translate(-50%, -50%)',
-            background: 'rgba(0, 0, 0, 0.65)',
+            background: 'rgba(0, 0, 0, 0.75)',
             'text-transform': 'uppercase',
             'pointer-events': 'none',
             'letter-spacing': '3px',
@@ -74,7 +74,7 @@ export default function Project({ project, scrollToProject }) {
         },
         descriptionTextContent: {
             position: 'relative',
-            'z-index': '5',
+            'z-index': 5,
         },
         descriptionCanvas: {
             transform: 'translate(-50%, -50%)',
@@ -107,7 +107,7 @@ export default function Project({ project, scrollToProject }) {
             'margin-bottom': '10px',
             'text-align': 'center',
             'font-size': '0.75rem',
-            'font-weight': '100',
+            'font-weight': 100,
         },
         technologiesHr: {
             background: 'linear-gradient(90deg, transparent 0%, black 50%, transparent 100%)',
@@ -138,10 +138,20 @@ export default function Project({ project, scrollToProject }) {
         },
         title: {
             'font-family': 'Montserrat',
-            'letter-spacing': '1px',
-            'text-align': 'center',
+            position: 'relative',
             'font-size': '3rem',
-            'font-weight': 500,
+            color: 'white',
+            'z-index': 5,
+        },
+        descriptionHr: {
+            'margin-bottom': '20px',
+            'margin-top': '10px',
+            position: 'relative',
+            background: 'white',
+            height: '4px',
+            width: '75px',
+            'z-index': 5,
+            border: 0,
         },
         scrollButtonIcon: {
 
@@ -152,9 +162,6 @@ export default function Project({ project, scrollToProject }) {
     return (
         <article className={`${classes.project} project`}>
             <div className={classes.preview}>
-                <h1 className={classes.title}>
-                    {project.title}
-                </h1>
                 <a className={classes.previewImageWrapper} href={project.link} target="_blank">
                     <img className={classes.previewImage} src={project.image} alt="Project preview" />
                     <span className={classes.previewImageText}>
@@ -185,6 +192,10 @@ export default function Project({ project, scrollToProject }) {
             </div>
             <div className={classes.description}>
                 <p className={classes.descriptionText}>
+                    <h1 className={classes.title}>
+                        {project.title}
+                    </h1>
+                    <hr className={classes.descriptionHr} />
                     <span className={classes.descriptionTextContent} dangerouslySetInnerHTML={{ __html: project.description }} />
                     <img className={classes.descriptionCanvas} src={`/storage/projects_canvas/${project.canvas}.png`} alt="Text background canvas" />
                 </p>

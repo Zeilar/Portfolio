@@ -1,7 +1,7 @@
 :root {
   --color-link: rgb(0, 127, 255);
   --color-primary: rgb(33, 150, 243);
-  --color-secondary: rgb(245, 0, 87);
+  --color-secondary: rgb(255, 127, 0);
 }
 
 *,
@@ -118,14 +118,12 @@ svg {
   src: url("/storage/fonts/Montserrat-Regular.ttf");
 }
 
-a,
-a:visited {
+a {
   color: var(--color-link);
   text-decoration: none;
 }
 
-a:hover,
-a:visited:hover {
+a:hover {
   text-decoration: underline;
 }
 

@@ -21,7 +21,6 @@ export default function App() {
 
     return (
         <Router>
-            <Header />
             <Switch>
                 <Route path="/" exact component={Index} />
                 <Route path="/projects" exact component={Projects} />
