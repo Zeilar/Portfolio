@@ -157,13 +157,18 @@ export default function Project({ project, scrollToProject }) {
             outline: 0,
         },
         title: {
-            'font-family': 'Montserrat',
             'align-items': 'baseline',
             position: 'relative',
-            'font-size': '2.5rem',
             display: 'flex',
             color: 'white',
             'z-index': 5,
+        },
+        titleText: {
+            'text-transform': 'uppercase',
+            'font-family': 'Righteous',
+            'letter-spacing': '1px',
+            'font-size': '3rem',
+            'font-weight': 500,
         },
         descriptionHr: {
             'margin-bottom': '20px',
@@ -239,7 +244,9 @@ export default function Project({ project, scrollToProject }) {
             <div className={`${classes.description} ${visible ? 'visible' : ''} description`}>
                 <div className={classes.descriptionText}>
                     <div className={classes.title}>
-                        <h1>{project.title}</h1>
+                        <h1 className={classes.titleText}>
+                            {project.title}
+                        </h1>
                         <a className={classes.github} href={project.github} target="_blank" title="GitHub repository">
                             <Icon path={mdiGithub} />
                         </a>
