@@ -10,7 +10,7 @@ export default function App() {
     const [user, setUser] = useState(true);
 
     async function authenticate() {
-        await fetch('/api/authenticate', { method: 'POST' })
+        await fetch('/api/authenticate')
             .then(response => response.json())
             .then(user => setUser(user));
     }
@@ -22,8 +22,8 @@ export default function App() {
     }
 
     useEffect(() => {
-        if (user == null) authenticate();
         if (projects == null) getProjects();
+        if (user == null) authenticate();
     }, [user, projects, getProjects, authenticate]);
 
     return (
