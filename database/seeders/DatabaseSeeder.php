@@ -89,7 +89,7 @@ class DatabaseSeeder extends Seeder
             ->each(fn(string $name) => $query->orWhere('name', $name));
         $project = Project::create([
             'title' => 'Cinema',
-            'description' => 'A watch together app. This project was purely for fun, and something that me and my friends could potentially us. The concept is very simple; you have a room with users inside, and a playlist where you add the video(s) you want to watch. Then the player is synced for everybody. And of course you can chat as well! There are still some things left to do, but it\'s almost finished!',
+            'description' => 'A watch together app. This project was purely for fun, and something that me and my friends could potentially use. The concept is very simple; you have a room with users inside, and a playlist where you add the video(s) you want to watch. Then the player is synced for everybody. And of course you can chat as well! There are still some things left to do, but it\'s almost finished!',
             'image' => '/storage/projects_images/cinema.png',
             'github' => 'http://www.github.com/Zeilar/Cinema',
             'canvas' => 'cinema',
