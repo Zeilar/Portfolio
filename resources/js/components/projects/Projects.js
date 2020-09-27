@@ -5,7 +5,7 @@ import Project from './Project';
 import Header from '../Header';
 import Icon from '@mdi/react';
 
-export default function Projects() {
+export default function Projects({ projects }) {
     const styles = createUseStyles({
         projects: {
             'justify-content': 'center',
@@ -17,14 +17,7 @@ export default function Projects() {
     });
     const classes = styles();
 
-    const [projects, setProjects] = useState();
     const projectsElements = useRef();
-
-    async function getProjects() {
-        await fetch('/api/projects')
-            .then(response => response.json())
-            .then(projects => setProjects(projects));
-    }
 
     function scrollToProject(fromProject) {
         const from = projects.indexOf(fromProject);
@@ -33,10 +26,6 @@ export default function Projects() {
         window.scrollTo(0, toElement.offsetTop);
     }
 
-    useEffect(() => {
-        if (projects == null) getProjects();
-    }, [projects, setProjects]);
-
     return (
         <>
             <Header />
@@ -44,7 +33,7 @@ export default function Projects() {
                 {
                     projects?.length
                         ? projects?.map(project => <Project key={project.id} scrollToProject={scrollToProject} project={project} />)
-                        : <Icon size={4} path={mdiLoading} spin={1} />
+                        : <Icon size={2} path={mdiLoading} spin={1} />
                 }
             </div>
         </>
