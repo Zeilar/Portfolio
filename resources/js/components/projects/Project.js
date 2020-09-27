@@ -22,6 +22,7 @@ export default function Project({ project, scrollToProject }) {
                 }
             },
             '&:nth-child(even)': {
+                background: 'rgb(250, 250, 250)',
                 'flex-direction': 'row-reverse',
                 '& .preview': {
                     transform: 'translateX(45px)',
@@ -31,7 +32,6 @@ export default function Project({ project, scrollToProject }) {
                 },
             },
             '&:nth-child(odd)': {
-                background: 'rgb(250, 250, 250)',
                 '& .preview': {
                     transform: 'translateX(-45px)',
                 },
@@ -176,8 +176,9 @@ export default function Project({ project, scrollToProject }) {
             border: 0,
         },
         github: {
-            'margin-left': '10px',
+            'margin': 'auto auto auto 10px',
             color: 'inherit',
+            display: 'flex',
             width: '3rem',
             '&:hover': {
                 color: 'black',

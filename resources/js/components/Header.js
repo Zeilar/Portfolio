@@ -2,18 +2,20 @@ import React, { useState, useRef, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 import { NavLink } from 'react-router-dom';
 
-export default function Header() {
+export default function Header(props) {
     const styles = createUseStyles({
         header: {
-            transition: 'box-shadow 0.15s linear, background 0.15s linear',
+            transition: 'box-shadow 0.1s linear, background 0.1s linear',
             padding: '20px 25vw',
-            background: 'white',
+            background: 'none',
             position: 'sticky',
             'z-index': '100',
             display: 'flex',
+            width: '100%',
             top: 0,
             '&.background': {
                 'box-shadow': '0 0 15px 0px rgba(0, 0, 0, 0.25)',
+                background: 'white',
             },
         },
         navbar: {
@@ -54,7 +56,7 @@ export default function Header() {
     });
 
     return (
-        <header className={`${classes.header}${hasBackground ? ' background' : ''}`} ref={header}>
+        <header className={`${classes.header}${hasBackground ? ' background' : ''}`} ref={header} {...props}>
             <span className={classes.brand}>
                 Philip Angelin
             </span>

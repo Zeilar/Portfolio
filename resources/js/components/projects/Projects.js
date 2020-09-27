@@ -28,7 +28,7 @@ export default function Projects({ projects }) {
 
     return (
         <>
-            <Header />
+            <Header style={{ position: 'fixed' }} />
             <div className={classes.projects} ref={projectsElements}>
                 {
                     projects?.length
