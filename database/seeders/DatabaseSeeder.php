@@ -52,6 +52,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Z-Forum',
             'description' => 'My first real, finished project; a forum targetted at a younger audience. This site has a very modern look for a forum and some functionality you don\'t often see. It\'s very backend oriented as I used Laravel as an MVC, which is its original purpose. However in newer projects of mine, I rather serve my own frontend with frameworks such as React, Vue, Angular etc.',
             'image' => '/storage/projects_images/zforum.png',
+            'github' => 'http://www.github.com/Zeilar/Z-Forum',
             'canvas' => 'zforum',
             'link' => 'https://zforum.angelin.dev',
         ]);
@@ -64,6 +65,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Tools',
             'description' => 'This app was my first take on React. It features React Router and is served on an Apache server. This is meant mostly for personal use but others are free to make some use of it. Keep in mind it is a work in progress and may not even look like the image on the side currently.',
             'image' => '/storage/projects_images/tools.png',
+            'github' => 'http://www.github.com/Zeilar/tools',
             'canvas' => 'tools',
             'link' => 'https://tools.angelin.dev',
         ]);
@@ -76,14 +78,23 @@ class DatabaseSeeder extends Seeder
             'title' => 'ZCMS',
             'description' => 'Now that I had made a project in Laravel and React respectively, I decided to do a second take on my Z-Forum project, but this time with a mostly React-based frontend. Unlike Z-Forum, this CMS will have a whole dashboard and vastly improved systems. Note that it\'s in early development at the time of writing this.',
             'image' => '/storage/projects_images/zcms.png',
+            'github' => 'http://www.github.com/Zeilar/ZCMS',
             'canvas' => 'zcms',
             'link' => 'https://zcms.angelin.dev',
         ]);
         $project->technologies()->sync($query->pluck('id'));
 
-        // Project::factory(3)->create()->each(function($project) {
-        //     $randomTechnologies = Technology::inRandomOrder()->limit(rand(1, 5))->pluck('id');            
-        //     $project->technologies()->sync($randomTechnologies);
-        // });
+        $query = Technology::query();
+        collect(['PHP', 'JavaScript', 'CSS', 'HTML', 'SASS', 'Laravel', 'MySQL', 'Apache'])
+            ->each(fn(string $name) => $query->orWhere('name', $name));
+        $project = Project::create([
+            'title' => 'Cinema',
+            'description' => 'A watch together app. This project was purely for fun, and something that me and my friends could potentially us. The concept is very simple; you have a room with users inside, and a playlist where you add the video(s) you want to watch. Then the player is synced for everybody. And of course you can chat as well! There are still some things left to do, but it\'s almost finished!',
+            'image' => '/storage/projects_images/cinema.png',
+            'github' => 'http://www.github.com/Zeilar/Cinema',
+            'canvas' => 'cinema',
+            'link' => 'https://cinema.angelin.dev',
+        ]);
+        $project->technologies()->sync($query->pluck('id'));
     }
 }

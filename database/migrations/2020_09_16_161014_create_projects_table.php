@@ -18,6 +18,7 @@ class CreateProjectsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('image');
+            $table->string('github');
             $table->string('canvas');
             $table->string('link');
         });

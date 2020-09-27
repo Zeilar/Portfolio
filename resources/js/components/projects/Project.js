@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { mdiArrowDownCircleOutline, mdiChevronDoubleDown } from '@mdi/js';
+import { mdiChevronDoubleDown, mdiGithub } from '@mdi/js';
 import { createUseStyles } from 'react-jss';
 import Icon from '@mdi/react';
 
@@ -158,8 +158,10 @@ export default function Project({ project, scrollToProject }) {
         },
         title: {
             'font-family': 'Montserrat',
+            'align-items': 'baseline',
             position: 'relative',
-            'font-size': '3rem',
+            'font-size': '2.5rem',
+            display: 'flex',
             color: 'white',
             'z-index': 5,
         },
@@ -172,6 +174,14 @@ export default function Project({ project, scrollToProject }) {
             width: '75px',
             'z-index': 5,
             border: 0,
+        },
+        github: {
+            'margin-left': '10px',
+            color: 'inherit',
+            width: '3rem',
+            '&:hover': {
+                color: 'black',
+            },
         },
         scrollButtonIcon: {
 
@@ -192,7 +202,7 @@ export default function Project({ project, scrollToProject }) {
     useEffect(() => {
         window.addEventListener('scroll', fadeIn);
         fadeIn();
-    }, [visible, setVisible, projectElement, window]);
+    }, [projectElement, fadeIn]);
 
     return (
         <article className={`${classes.project} project`} ref={projectElement}>
@@ -227,9 +237,12 @@ export default function Project({ project, scrollToProject }) {
             </div>
             <div className={`${classes.description} ${visible ? 'visible' : ''} description`}>
                 <div className={classes.descriptionText}>
-                    <h1 className={classes.title}>
-                        {project.title}
-                    </h1>
+                    <div className={classes.title}>
+                        <h1>{project.title}</h1>
+                        <a className={classes.github} href={project.github} target="_blank" title="GitHub repository">
+                            <Icon path={mdiGithub} />
+                        </a>
+                    </div>
                     <hr className={classes.descriptionHr} />
                     <p className={classes.descriptionTextContent} dangerouslySetInnerHTML={{ __html: project.description }} />
                     <img className={classes.descriptionCanvas} src={`/storage/projects_canvas/${project.canvas}.png`} alt="Text background canvas" />
