@@ -24,6 +24,9 @@ export default function Project({ project, scrollToProject }) {
             '&:nth-child(even)': {
                 background: 'rgb(250, 250, 250)',
                 flexDirection: 'row-reverse',
+                '@media (max-width: 768px)': {
+                    flexDirection: 'column',
+                },
                 '& .preview': {
                     transform: 'translateX(45px)',
                 },
@@ -38,6 +41,12 @@ export default function Project({ project, scrollToProject }) {
                 '& .description': {
                     transform: 'translateX(45px)',
                 },
+            },
+            '@media (max-width: 768px)': {
+                flexDirection: 'column',
+                height: 'unset',
+                padding: 15,
+                gap: 0,
             },
         },
         preview: {
@@ -84,6 +93,10 @@ export default function Project({ project, scrollToProject }) {
             alignItems: 'center',
             display: 'flex',
             flex: 1,
+            '@media (max-width: 768px)': {
+                overflow: 'hidden',
+                margin: [30, 0],
+            },
         },
         descriptionText: {
             fontFamily: 'Poppins',
@@ -91,6 +104,9 @@ export default function Project({ project, scrollToProject }) {
             position: 'relative',
             padding: '0 25%',
             color: 'white',
+            '@media (max-width: 768px)': {
+                padding: 15,
+            },
         },
         descriptionTextContent: {
             position: 'relative',
@@ -102,6 +118,9 @@ export default function Project({ project, scrollToProject }) {
             position: 'absolute',
             left: '50%',
             top: '50%',
+            '@media (max-width: 768px)': {
+                maxWidth: '200%',
+            },
         },
         technologiesWrapper: {
             flexDirection: 'column',
@@ -155,6 +174,12 @@ export default function Project({ project, scrollToProject }) {
             bottom: 30,
             height: 30,
             width: 30,
+            '@media (max-width: 768px)': {
+                transform: 'unset',
+                position: 'unset',
+                bottom: 'unset',
+                left: 'unset',
+            },
         },
         title: {
             alignItems: 'baseline',

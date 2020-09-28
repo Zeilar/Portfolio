@@ -14,13 +14,19 @@
 }
 
 body {
+    background: var(--color-bg);
     font-family: 'Roboto';
     overflow-x: hidden;
     color: black;
+
+    @media (max-width: 768px) {
+        font-size: 80%;
+    }
 }
 
 #app {
     flex-direction: column;
+    background: inherit;
     min-height: 100vh;
     display: flex;
 }

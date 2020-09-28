@@ -6,6 +6,8 @@ import Header from '../Header';
 import Icon from '@mdi/react';
 
 export default function Projects({ projects }) {
+    const headerHeight = document.querySelector('header')?.getBoundingClientRect().height;
+
     const styles = createUseStyles({
         projects: {
             justifyContent: 'center',
@@ -13,6 +15,9 @@ export default function Projects({ projects }) {
             alignItems: 'center',
             display: 'flex',
             flex: 1,
+            '@media (max-width: 768px)': {
+                marginTop: headerHeight,
+            },
         },
     });
     const classes = styles();
