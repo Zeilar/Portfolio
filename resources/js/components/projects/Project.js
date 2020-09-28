@@ -42,14 +42,14 @@ export default function Project({ project, scrollToProject }) {
                     transform: 'translateX(45px)',
                 },
             },
-            '@media (max-width: 768px)': {
-                padding: 15,
-            },
             '@media (max-width: 1200px)': {
                 flexDirection: 'column',
                 padding: '15px 15vw',
                 height: 'unset',
                 gap: 0,
+            },
+            '@media (max-width: 768px)': {
+                padding: 15,
             },
         },
         preview: {
@@ -98,6 +98,7 @@ export default function Project({ project, scrollToProject }) {
             flex: 1,
             '@media (max-width: 1200px)': {
                 overflow: 'hidden',
+                borderRadius: 10,
                 margin: [30, 0],
             },
         },
@@ -197,6 +198,9 @@ export default function Project({ project, scrollToProject }) {
             letterSpacing: 1,
             fontSize: '3rem',
             fontWeight: 500,
+            '@media (max-width: 768px)': {
+                fontSize: '2rem',
+            },
         },
         descriptionHr: {
             position: 'relative',
@@ -215,6 +219,9 @@ export default function Project({ project, scrollToProject }) {
             width: '3rem',
             '&:hover': {
                 color: 'black',
+            },
+            '@media (max-width: 768px)': {
+                width: '2rem',
             },
         },
         scrollButtonIcon: {

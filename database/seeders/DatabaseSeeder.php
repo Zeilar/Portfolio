@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
             ->each(fn(string $name) => $query->orWhere('name', $name));
         $project = Project::create([
             'title' => 'Z-Forum',
-            'description' => 'My first real, finished project; a forum targetted at a younger audience. This site has a very modern look for a forum and some functionality you don\'t often see. It\'s very backend oriented as I used Laravel as an MVC, which is its original purpose. However in newer projects of mine, I rather serve my own frontend with frameworks such as React, Vue, Angular etc.',
+            'description' => 'My first real, finished project; a forum targetted at a younger audience. This site has a very modern look for a forum and some functionality you don\'t often see.',
             'image' => '/storage/projects_images/zforum.png',
             'github' => 'http://www.github.com/Zeilar/Z-Forum',
             'canvas' => 'zforum',
