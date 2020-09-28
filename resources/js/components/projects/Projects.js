@@ -8,9 +8,9 @@ import Icon from '@mdi/react';
 export default function Projects({ projects }) {
     const styles = createUseStyles({
         projects: {
-            'justify-content': 'center',
-            'flex-direction': 'column',
-            'align-items': 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            alignItems: 'center',
             display: 'flex',
             flex: 1,
         },

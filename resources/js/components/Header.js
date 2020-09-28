@@ -9,41 +9,41 @@ export default function Header(props) {
             padding: '20px 25vw',
             background: 'none',
             position: 'sticky',
-            'z-index': '100',
             display: 'flex',
+            zIndex: '100',
             width: '100%',
             top: 0,
             '&.background': {
-                'box-shadow': '0 0 15px 0px rgba(0, 0, 0, 0.25)',
+                boxShadow: '0 0 15px 0 rgba(0, 0, 0, 0.25)',
                 background: 'white',
             },
         },
         navbar: {
-            'margin-left': 'auto',
+            marginLeft: 'auto',
             display: 'flex',
         },
         navlist: {
-            'align-items': 'center',
+            alignItems: 'center',
             display: 'flex',
         },
         navitem: {
             margin: '0 20px',
         },
         navlink: {
-            'user-select': 'none',
             position: 'relative',
             padding: '20px 10px',
+            userSelect: 'none',
             color: 'black',
             '&:hover': {
                 color: 'var(--color-link)',
-                'text-decoration': 'none',
+                textDecoration: 'none',
             },
             '&.active': {
                 color: 'var(--color-link)',
             },
         },
         brand: {
-            'align-self': 'center',
+            alignSelf: 'center',
         }
     });
     const classes = styles();
