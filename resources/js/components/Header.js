@@ -27,12 +27,12 @@ export default function Header(props) {
             display: 'flex',
         },
         navitem: {
-            margin: '0 20px',
+            margin: [0, 20],
         },
         navlink: {
             position: 'relative',
-            padding: '20px 10px',
             userSelect: 'none',
+            padding: [20, 10],
             color: 'black',
             '&:hover': {
                 color: 'var(--color-link)',
