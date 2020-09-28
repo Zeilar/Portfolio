@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { NavLink } from 'react-router-dom';
 
 export default function Header(props) {
     const styles = createUseStyles({
         header: {
-            transition: 'box-shadow 0.1s linear, background 0.1s linear',
+            transition: 'box-shadow 0.1s linear',
             padding: '20px 25vw',
             background: 'none',
             position: 'sticky',
