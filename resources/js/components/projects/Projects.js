@@ -15,7 +15,7 @@ export default function Projects({ projects }) {
             alignItems: 'center',
             display: 'flex',
             flex: 1,
-            '@media (max-width: 768px)': {
+            '@media (max-width: 1200px)': {
                 marginTop: headerHeight,
             },
         },

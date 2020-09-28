@@ -7,7 +7,7 @@ export default function Header(props) {
         header: {
             transition: 'box-shadow 0.1s linear',
             padding: '20px 25vw',
-            background: 'none',
+            background: 'white',
             position: 'sticky',
             display: 'flex',
             width: '100%',
@@ -16,6 +16,9 @@ export default function Header(props) {
             '&.background': {
                 boxShadow: '0 0 15px 0 rgba(0, 0, 0, 0.25)',
                 background: 'white',
+            },
+            '@media (max-width: 1200px)': {
+                padding: '20px 15vw',
             },
         },
         navbar: {

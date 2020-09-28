@@ -24,7 +24,7 @@ export default function Project({ project, scrollToProject }) {
             '&:nth-child(even)': {
                 background: 'rgb(250, 250, 250)',
                 flexDirection: 'row-reverse',
-                '@media (max-width: 768px)': {
+                '@media (max-width: 1200px)': {
                     flexDirection: 'column',
                 },
                 '& .preview': {
@@ -43,9 +43,12 @@ export default function Project({ project, scrollToProject }) {
                 },
             },
             '@media (max-width: 768px)': {
-                flexDirection: 'column',
-                height: 'unset',
                 padding: 15,
+            },
+            '@media (max-width: 1200px)': {
+                flexDirection: 'column',
+                padding: '15px 15vw',
+                height: 'unset',
                 gap: 0,
             },
         },
@@ -93,7 +96,7 @@ export default function Project({ project, scrollToProject }) {
             alignItems: 'center',
             display: 'flex',
             flex: 1,
-            '@media (max-width: 768px)': {
+            '@media (max-width: 1200px)': {
                 overflow: 'hidden',
                 margin: [30, 0],
             },
@@ -104,7 +107,7 @@ export default function Project({ project, scrollToProject }) {
             position: 'relative',
             padding: '0 25%',
             color: 'white',
-            '@media (max-width: 768px)': {
+            '@media (max-width: 1200px)': {
                 padding: 15,
             },
         },
@@ -118,7 +121,7 @@ export default function Project({ project, scrollToProject }) {
             position: 'absolute',
             left: '50%',
             top: '50%',
-            '@media (max-width: 768px)': {
+            '@media (max-width: 1200px)': {
                 maxWidth: '200%',
             },
         },
@@ -174,7 +177,7 @@ export default function Project({ project, scrollToProject }) {
             bottom: 30,
             height: 30,
             width: 30,
-            '@media (max-width: 768px)': {
+            '@media (max-width: 1200px)': {
                 transform: 'unset',
                 position: 'unset',
                 bottom: 'unset',
