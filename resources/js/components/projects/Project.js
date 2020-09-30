@@ -95,7 +95,6 @@ export default function Project({ project, scrollToProject }) {
             flexDirection: 'column',
             fontFamily: 'Poppins',
             alignItems: 'center',
-            textAlign: 'justify',
             position: 'relative',
             padding: '0 25%',
             display: 'flex',
@@ -109,6 +108,7 @@ export default function Project({ project, scrollToProject }) {
             },
         },
         descriptionTextContent: {
+            textAlign: 'justify',
             position: 'relative',
             zIndex: 5,
         },
@@ -116,6 +116,7 @@ export default function Project({ project, scrollToProject }) {
             transform: 'translate(-50%, -50%)',
             pointerEvents: 'none',
             position: 'absolute',
+            maxWidth: '75%',
             left: '50%',
             top: '50%',
             '@media (max-width: 1200px)': {
@@ -182,7 +183,7 @@ export default function Project({ project, scrollToProject }) {
             },
         },
         title: {
-            alignItems: 'baseline',
+            alignSelf: 'flex-start',
             position: 'relative',
             display: 'flex',
             color: 'white',
@@ -200,13 +201,14 @@ export default function Project({ project, scrollToProject }) {
         },
         descriptionHr: {
             position: 'relative',
+            marginRight: 'auto',
             background: 'white',
             marginBottom: 20,
             marginTop: 10,
-            width: 75,
             height: 4,
             zIndex: 5,
             border: 0,
+            width: 75,
         },
         github: {
             margin: 'auto auto auto 10px',
