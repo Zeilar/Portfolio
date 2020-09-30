@@ -93,22 +93,18 @@ export default function Project({ project, scrollToProject }) {
         description: {
             justifyContent: 'center',
             flexDirection: 'column',
+            fontFamily: 'Poppins',
             alignItems: 'center',
+            textAlign: 'justify',
+            position: 'relative',
+            padding: '0 25%',
             display: 'flex',
+            color: 'white',
             flex: 1,
             '@media (max-width: 1200px)': {
                 overflow: 'hidden',
                 borderRadius: 10,
                 margin: [30, 0],
-            },
-        },
-        descriptionText: {
-            fontFamily: 'Poppins',
-            textAlign: 'justify',
-            position: 'relative',
-            padding: '0 25%',
-            color: 'white',
-            '@media (max-width: 1200px)': {
                 padding: 15,
             },
         },
@@ -234,9 +230,11 @@ export default function Project({ project, scrollToProject }) {
     const projectElement = useRef();
 
     const fadeIn = useCallback(() => {
-        if (visible == null && window.scrollY > (projectElement?.current?.offsetTop - window.screen.height / 2)) {
+        if (visible == null && window.scrollY > (projectElement?.current?.offsetTop - window.screen.height * 0.75)) {
             sessionStorage.setItem('fadeProjects', false);
-            setVisible(true);
+            setTimeout(() => {
+                setVisible(true);
+            }, 250);
         }
     }, [visible, setVisible, projectElement]);
 
@@ -255,9 +253,9 @@ export default function Project({ project, scrollToProject }) {
                     </span>
                 </a>
                 <div className={classes.technologiesWrapper}>
-                    <p className={classes.technologiesText}>
+                    <h2 className={classes.technologiesText}>
                         Technologies
-                    </p>
+                    </h2>
                     <hr className={classes.technologiesHr} />
                     <div className={classes.technologies}>
                         {
@@ -277,19 +275,17 @@ export default function Project({ project, scrollToProject }) {
                 </div>
             </div>
             <div className={`${classes.description} ${visible ? 'visible' : ''} description`}>
-                <div className={classes.descriptionText}>
-                    <div className={classes.title}>
-                        <h1 className={classes.titleText}>
-                            {project.title}
-                        </h1>
-                        <a className={classes.github} href={project.github} target="_blank" title="GitHub repository">
-                            <Icon path={mdiGithub} />
-                        </a>
-                    </div>
-                    <hr className={classes.descriptionHr} />
-                    <p className={classes.descriptionTextContent} dangerouslySetInnerHTML={{ __html: project.description }} />
-                    <img className={classes.descriptionCanvas} src={`/storage/projects_canvas/${project.canvas}.png`} alt="Text background canvas" />
+                <div className={classes.title}>
+                    <h1 className={classes.titleText}>
+                        {project.title}
+                    </h1>
+                    <a className={classes.github} href={project.github} target="_blank" title="GitHub repository">
+                        <Icon path={mdiGithub} />
+                    </a>
                 </div>
+                <hr className={classes.descriptionHr} />
+                <p className={classes.descriptionTextContent} dangerouslySetInnerHTML={{ __html: project.description }} />
+                <img className={classes.descriptionCanvas} src={`/storage/projects_canvas/${project.canvas}.png`} alt="Text background canvas" />
             </div>
 
             <button className={`${classes.scrollButton} scrollButton`} onClick={() => scrollToProject(project)}>

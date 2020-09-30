@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 import { mdiLoading } from '@mdi/js';
 import Project from './Project';
@@ -17,6 +17,9 @@ export default function Projects({ projects }) {
             flex: 1,
             '@media (max-width: 1200px)': {
                 marginTop: headerHeight,
+            },
+            '@media (max-width: 768px)': {
+                marginTop: 0,
             },
         },
     });
