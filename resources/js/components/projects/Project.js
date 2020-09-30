@@ -90,6 +90,9 @@ export default function Project({ project, scrollToProject }) {
             opacity: 0,
             top: '55%',
         },
+        descriptionWrapper: {
+            flex: 1,
+        },
         description: {
             justifyContent: 'center',
             flexDirection: 'column',
@@ -99,7 +102,6 @@ export default function Project({ project, scrollToProject }) {
             padding: '0 25%',
             display: 'flex',
             color: 'white',
-            flex: 1,
             '@media (max-width: 1200px)': {
                 overflow: 'hidden',
                 borderRadius: 10,
@@ -116,7 +118,6 @@ export default function Project({ project, scrollToProject }) {
             transform: 'translate(-50%, -50%)',
             pointerEvents: 'none',
             position: 'absolute',
-            maxWidth: '75%',
             left: '50%',
             top: '50%',
             '@media (max-width: 1200px)': {
@@ -276,18 +277,20 @@ export default function Project({ project, scrollToProject }) {
                     </div>
                 </div>
             </div>
-            <div className={`${classes.description} ${visible ? 'visible' : ''} description`}>
-                <div className={classes.title}>
-                    <h1 className={classes.titleText}>
-                        {project.title}
-                    </h1>
-                    <a className={classes.github} href={project.github} target="_blank" title="GitHub repository">
-                        <Icon path={mdiGithub} />
-                    </a>
+            <div className={classes.descriptionWrapper}>
+                <div className={`${classes.description} ${visible ? 'visible' : ''} description`}>
+                    <div className={classes.title}>
+                        <h1 className={classes.titleText}>
+                            {project.title}
+                        </h1>
+                        <a className={classes.github} href={project.github} target="_blank" title="GitHub repository">
+                            <Icon path={mdiGithub} />
+                        </a>
+                    </div>
+                    <hr className={classes.descriptionHr} />
+                    <p className={classes.descriptionTextContent} dangerouslySetInnerHTML={{ __html: project.description }} />
+                    <img className={classes.descriptionCanvas} src={`/storage/projects_canvas/${project.canvas}.png`} alt="Text background canvas" />
                 </div>
-                <hr className={classes.descriptionHr} />
-                <p className={classes.descriptionTextContent} dangerouslySetInnerHTML={{ __html: project.description }} />
-                <img className={classes.descriptionCanvas} src={`/storage/projects_canvas/${project.canvas}.png`} alt="Text background canvas" />
             </div>
 
             <button className={`${classes.scrollButton} scrollButton`} onClick={() => scrollToProject(project)}>
