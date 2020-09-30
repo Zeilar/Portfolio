@@ -231,7 +231,6 @@ export default function Project({ project, scrollToProject }) {
 
     const fadeIn = useCallback(() => {
         if (visible == null && window.scrollY > (projectElement?.current?.offsetTop - window.screen.height * 0.75)) {
-            sessionStorage.setItem('fadeProjects', false);
             setTimeout(() => {
                 setVisible(true);
             }, 250);
@@ -239,6 +238,7 @@ export default function Project({ project, scrollToProject }) {
     }, [visible, setVisible, projectElement]);
 
     useEffect(() => {
+        sessionStorage.setItem('fadeProjects', false);
         window.addEventListener('scroll', fadeIn);
         fadeIn();
     }, [projectElement, fadeIn]);
