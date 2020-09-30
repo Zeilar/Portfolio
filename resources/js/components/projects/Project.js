@@ -145,9 +145,9 @@ export default function Project({ project, scrollToProject }) {
             textTransform: 'uppercase',
             fontFamily: 'RussoOne',
             textAlign: 'center',
-            fontSize: '0.75rem',
             letterSpacing: 1,
             marginBottom: 10,
+            fontSize: '1rem',
             fontWeight: 100,
         },
         technologiesHr: {
