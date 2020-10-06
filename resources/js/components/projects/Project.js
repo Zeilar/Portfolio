@@ -3,7 +3,7 @@ import { mdiChevronDoubleDown, mdiGithub } from '@mdi/js';
 import { createUseStyles } from 'react-jss';
 import Icon from '@mdi/react';
 
-export default function Project({ project, scrollToProject }) {
+export default function Project({ project, scrollToNextProject }) {
     const styles = createUseStyles({
         project: {
             justifyContent: 'center',
@@ -293,7 +293,7 @@ export default function Project({ project, scrollToProject }) {
                 </div>
             </div>
 
-            <button className={`${classes.scrollButton} scrollButton`} onClick={() => scrollToProject(project)}>
+            <button className={`${classes.scrollButton} scrollButton`} onClick={() => scrollToNextProject(project)}>
                 <Icon className={classes.scrollButtonIcon} path={mdiChevronDoubleDown} />
             </button>
         </article>

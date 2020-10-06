@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Technology;
 use App\Models\Project;
+use App\Models\Field;
 
 class DatabaseSeeder extends Seeder
 {
@@ -96,5 +97,10 @@ class DatabaseSeeder extends Seeder
             'link' => 'https://cinema.angelin.dev',
         ]);
         $project->technologies()->sync($query->pluck('id'));
+
+        Field::create([
+            'name' => 'heroHeaderBig',
+            'content' => 'Philip Angelin',
+        ]);
     }
 }

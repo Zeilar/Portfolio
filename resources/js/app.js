@@ -8,9 +8,7 @@ import './bootstrap';
 const app = document.getElementById('app');
 if (app) {
     ReactDOM.render(
-        <ThemeProvider theme={theme}>
-            <App />
-        </ThemeProvider>,
+        <App />,
         app
     );
 }

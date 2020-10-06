@@ -16,27 +16,25 @@
 
 :root {
   scroll-behavior: smooth;
+  --color-secondary: rgb(0, 179, 101);
+  --color-primary: rgb(97, 218, 251);
 }
 
 ::-moz-selection {
-  background: var(--color-secondary);
+  background: var(--color-primary);
+  color: white;
 }
 
 ::selection {
-  background: var(--color-secondary);
+  background: var(--color-primary);
+  color: white;
 }
 
 body {
   background: var(--color-bg);
   font-family: 'Roboto';
   overflow-x: hidden;
-  color: black;
-}
-
-@media (max-width: 768px) {
-  body {
-    font-size: 80%;
-  }
+  color: white;
 }
 
 #app {
@@ -71,6 +69,50 @@ img {
 svg {
   height: 100%;
   width: 100%;
+}
+
+input {
+  border: 1px solid var(--color-primary);
+  background: rgba(0, 0, 0, 0.75);
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-shadow: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  padding: 5px 10px;
+  color: inherit;
+  outline: 0;
+}
+
+button {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: none;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+}
+
+button.btn {
+  border: 1px solid var(--color-primary);
+  background: rgba(0, 0, 0, 0.75);
+  color: var(--color-primary);
+  padding: 5px;
+  height: 2rem;
+  width: 2rem;
+}
+
+button.save {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+button.cancel {
+  border-color: #7f0000;
+  color: #7f0000;
 }
 
 @font-face {
@@ -126,6 +168,11 @@ svg {
 @font-face {
   font-family: 'Montserrat';
   src: url("/storage/fonts/Montserrat-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url("/storage/fonts/Nunito-Regular.ttf");
 }
 
 a {
