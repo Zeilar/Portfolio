@@ -1,8 +1,9 @@
+import { mdiPen, mdiClose, mdiCheck, mdiTrashCan } from '@mdi/js';
 import React, { useState, useRef, useEffect } from 'react';
-import { mdiPen, mdiClose, mdiCheck } from '@mdi/js';
 import { getField } from '../../../functions';
 import { createUseStyles } from 'react-jss';
 import Icon from '@mdi/react';
+import HeroHeaderSmall from './HeroHeaderSmall';
 
 export default function HeroHeaderBig() {
     const styles = createUseStyles({
@@ -17,40 +18,54 @@ export default function HeroHeaderBig() {
             display: 'flex',
             color: 'white',
         },
-        headerEdit: {
+        edit: {
             marginLeft: 10,
             height: '2rem',
             width: '2rem',
-            padding: 5,
         },
-        headerSave: {
+        save: {
             marginLeft: 10,
         },
-        headerCancel: {
+        cancel: {
             marginLeft: 10,
         },
-        headerInput: {
-
+        delete: {
+            marginLeft: 10,
+        },
+        input: {
+            textAlign: 'center',
         },
     });
     const classes = styles();
 
     const [edit, setEdit] = useState(false);
     const [header, setHeader] = useState();
-    const headerInput = useRef();
+    const input = useRef();
+
+    const user = sessionStorage.getItem('user');
 
     async function save() {
-        if (header.content === headerInput.current.value) return setEdit(false);
+        if (header.content === input.current.value) return setEdit(false);
 
-        await fetch(`/api/fields/${header.id}`, { method: 'PATCH', body: headerInput.current.value })
+        const args = {
+            method: 'PATCH',
+            body: JSON.stringify({
+                name: header.name ?? 'heroHeaderBig',
+                content: input.current.value,
+            })
+        };
+
+        await fetch(`/api/fields/${header.id ?? 0}`, args)
             .then(response => {
                 if (response.status === 200) {
                     return response.json();
                 }
             })
             .then(content => {
-                setHeader(content);
-                setEdit(false);
+                if (content) {
+                    setHeader(content);
+                    setEdit(false);
+                }
             });
     }
 
@@ -60,27 +75,30 @@ export default function HeroHeaderBig() {
 
     return (
         <h1 className={classes.header}>
+            {edit && user && <input onKeyDown={(e) => e.key === 'Enter' && save()} className={classes.input} defaultValue={header?.content} ref={input} />}
+            {!edit && header?.content}
             {
-                edit
-                    ? <input className={classes.headerInput} type="text" defaultValue={header?.content} ref={headerInput} />
-                    : header?.content
-            }
-            {
-                !edit && sessionStorage.getItem('user') &&
-                    <button className={`${classes.headerEdit} btn`} onClick={() => setEdit(true)}>
+                !edit && user &&
+                    <button className={`${classes.edit} btn`} onClick={() => setEdit(true)}>
                         <Icon className={classes.editIcon} path={mdiPen} />
                     </button>
             }
             {
-                edit &&
+                edit && user &&
                     <>
-                        <button className={`${classes.headerSave} btn save`} onClick={save}>
+                        <button className={`${classes.save} btn save`} onClick={save}>
                             <Icon path={mdiCheck} />
                         </button>
-                        <button className={`${classes.headerCancel} btn cancel`} onClick={() => setEdit(false)}>
+                        <button className={`${classes.cancel} btn cancel`} onClick={() => setEdit(false)}>
                             <Icon path={mdiClose} />
                         </button>
                     </>
+            }
+            {
+                user && 
+                    <button className={`${classes.delete} btn delete`}>
+                        <Icon path={mdiTrashCan} />
+                    </button>
             }
         </h1>
     );

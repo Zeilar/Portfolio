@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 Route::resource('projects', ProjectsController::class)->except(['edit', 'create', 'show']);
-Route::resource('fields', FieldsController::class)->except(['edit', 'create', 'destroy']);
+Route::resource('fields', FieldsController::class)->except(['edit', 'create', 'store']);
 Route::get('authenticate', function() {
     return response()->json(true);
     return response()->json(auth()->user() ?? false);

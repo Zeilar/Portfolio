@@ -29,7 +29,12 @@ button {
     }
 
     &.cancel {
-        border-color: rgb(127, 0, 0);
-        color: rgb(127, 0, 0);
+        border-color: yellow;
+        color: yellow;
+    }
+
+    &.delete {
+        border-color: red;
+        color: red;
     }
 }

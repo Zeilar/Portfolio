@@ -3,6 +3,7 @@ import HeroHeaderBig from './fields/header/HeroHeaderBig';
 import HeroButton from './fields/header/HeroButton';
 import React, { useState, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
+import Field from './Field';
 
 export default function Header() {
     const styles = createUseStyles({
@@ -35,7 +36,7 @@ export default function Header() {
         <header className={classes.header}> 
             <div className={classes.hero}>
                 <HeroHeaderBig />
-                <HeroHeaderSmall />
+                <Field fieldName="heroButton" Render={HeroButton} />
             </div>
         </header>
     );

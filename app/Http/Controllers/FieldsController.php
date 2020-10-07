@@ -18,20 +18,9 @@ class FieldsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
-     * @param  String  $field
+     * @param  string  $field
      * @return \Illuminate\Http\Response
      */
     public function show(string $field)
@@ -47,9 +36,35 @@ class FieldsController extends Controller
      * @param  \App\Models\Field  $field
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Field $field)
+    public function update(Request $request, int $id)
     {
-        $field->update(['content' => $request->getContent()]);
+        // TODO: Login form
+        // if (!auth()->user()) return abort(401);
+        $json = json_decode($request->getContent());
+        $field = Field::firstOrCreate(
+            ['id' => $id],
+            [
+                'content' => $json->content,
+                'name' => $json->name,
+            ],
+        );
+        $field->update([
+            'content' => $json->content,
+            'name' => $json->name,
+        ]);
         return response()->json($field);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Field  $field
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Field $field)
+    {
+        // TODO: if (!auth()->user()) return abort(401);
+
+        return response()->json($field->delete());
     }
 }

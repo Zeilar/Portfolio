@@ -75,7 +75,6 @@ input {
   border: 1px solid var(--color-primary);
   background: rgba(0, 0, 0, 0.75);
   letter-spacing: inherit;
-  text-transform: inherit;
   text-shadow: inherit;
   font-family: inherit;
   font-weight: inherit;
@@ -180,8 +179,13 @@ button.save {
 }
 
 button.cancel {
-  border-color: #7f0000;
-  color: #7f0000;
+  border-color: yellow;
+  color: yellow;
+}
+
+button.delete {
+  border-color: red;
+  color: red;
 }
 
 .project:last-child .scrollButton {

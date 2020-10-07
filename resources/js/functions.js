@@ -15,6 +15,6 @@ async function authenticate() {
 }
 
 export {
-    getField,
     authenticate,
+    getField,
 }
