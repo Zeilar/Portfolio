@@ -1,20 +1,16 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
 import { authenticate } from '../functions';
-import Header from './header/Header';
+import React, { useEffect } from 'react';
 import NotFound from './NotFound';
 import Index from './Index';
 
 export default function App() {
-    const [user, setUser] = useState(true);
-
     useEffect(() => {
-        if (user == null) authenticate(setUser);
-    }, [user, authenticate]);
+        if (sessionStorage.getItem('user') == null) authenticate();
+    }, [authenticate]);
 
     return (
         <Router>
-            <Header />
             <Switch>
                 <Route path="/" exact component={Index} />
                 <Route component={NotFound} />

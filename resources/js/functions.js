@@ -8,10 +8,10 @@ async function getField(field, setField) {
         .then(field => setField(field));
 }
 
-async function authenticate(setUser) {
+async function authenticate() {
     await fetch('/api/authenticate')
         .then(response => response.json())
-        .then(user => setUser(user));
+        .then(user => sessionStorage.setItem('user', true));
 }
 
 export {

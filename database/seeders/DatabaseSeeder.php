@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 use App\Models\Technology;
 use App\Models\Project;
 use App\Models\Field;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +22,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::create([
+            'username' => 'Admin',
+            'password' => Hash::make(env('ADMIN_PASSWORD')),
+        ]);
+
         Technology::create(['name' => 'HTML', 'link' => 'http://www.w3.org/html', 'logo' => $this->getSvg('html5')]);
         Technology::create(['name' => 'CSS', 'link' => 'http://www.w3.org/css', 'logo' => $this->getSvg('css3')]);
         Technology::create(['name' => 'SASS', 'link' => 'http://www.sass-lang.com', 'logo' => $this->getSvg('sass', 'original')]);

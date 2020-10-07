@@ -85,36 +85,6 @@ input {
   outline: 0;
 }
 
-button {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background: none;
-  cursor: pointer;
-  outline: 0;
-  border: 0;
-}
-
-button.btn {
-  border: 1px solid var(--color-primary);
-  background: rgba(0, 0, 0, 0.75);
-  color: var(--color-primary);
-  padding: 5px;
-  height: 2rem;
-  width: 2rem;
-}
-
-button.save {
-  border-color: var(--color-secondary);
-  color: var(--color-secondary);
-}
-
-button.cancel {
-  border-color: #7f0000;
-  color: #7f0000;
-}
-
 @font-face {
   font-family: 'Lobster';
   src: url("/storage/fonts/Lobster-Regular.ttf");
@@ -182,6 +152,36 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+button {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: none;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+}
+
+button.btn {
+  border: 1px solid var(--color-primary);
+  background: rgba(0, 0, 0, 0.75);
+  color: var(--color-primary);
+  padding: 5px;
+  height: 2rem;
+  width: 2rem;
+}
+
+button.save {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+button.cancel {
+  border-color: #7f0000;
+  color: #7f0000;
 }
 
 .project:last-child .scrollButton {
