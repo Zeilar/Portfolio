@@ -79,24 +79,24 @@ export default function HeroHeaderSmall() {
             {!edit && header?.content}
             {
                 !edit && user &&
-                    <button className={`${classes.edit} btn`} onClick={() => setEdit(true)}>
+                    <button className={`${classes.edit} adminBtn`} onClick={() => setEdit(true)}>
                         <Icon className={classes.editIcon} path={mdiPen} />
                     </button>
             }
             {
                 edit && user &&
                     <>
-                        <button className={`${classes.save} btn save`} onClick={save}>
+                        <button className={`${classes.save} adminBtn save`} onClick={save}>
                             <Icon path={mdiCheck} />
                         </button>
-                        <button className={`${classes.cancel} btn cancel`} onClick={() => setEdit(false)}>
+                        <button className={`${classes.cancel} adminBtn cancel`} onClick={() => setEdit(false)}>
                             <Icon path={mdiClose} />
                         </button>
                     </>
             }
             {
                 user && 
-                    <button className={`${classes.delete} btn delete`}>
+                    <button className={`${classes.delete} adminBtn delete`}>
                         <Icon path={mdiTrashCan} />
                     </button>
             }

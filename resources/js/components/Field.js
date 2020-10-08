@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 import { getField } from '../functions';
 
-export default function Field({ Render, fieldName }) {
+export default function Field({ render: Render, fieldName }) {
     const [field, setField] = useState();
 
     async function save(input, setEdit) {
@@ -27,7 +27,8 @@ export default function Field({ Render, fieldName }) {
                     setField(content);
                     setEdit(false);
                 }
-            });
+            })
+            .catch(error => console.log(error));
     }
 
     async function deleteField(setEdit) {
@@ -44,7 +45,8 @@ export default function Field({ Render, fieldName }) {
                     setField(false);
                     setEdit(false);
                 }
-            });
+            })
+            .catch(error => console.log(error));
     }
 
     useEffect(() => {

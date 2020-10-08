@@ -6,16 +6,11 @@ import Icon from '@mdi/react';
 
 export default function HeroButton({ field, saveField, deleteField }) {
     const styles = createUseStyles({
-        header: {
-            textShadow: '0 0 8px black',
-            textTransform: 'uppercase',
-            fontFamily: 'Nunito',
-            alignItems: 'center',
-            letterSpacing: 1,
-            fontSize: '3rem',
-            fontWeight: 500,
+        button: {
+            
+        },
+        wrapper: {
             display: 'flex',
-            color: 'white',
         },
         edit: {
             marginLeft: 10,
@@ -42,6 +37,9 @@ export default function HeroButton({ field, saveField, deleteField }) {
 
     return (
         <div className={classes.wrapper}>
+            <button className={classes.button}>
+                {!edit && field?.content}
+            </button>
             {
                 edit && user && 
                     <input 
@@ -49,27 +47,26 @@ export default function HeroButton({ field, saveField, deleteField }) {
                         onKeyDown={(e) => e.key === 'Enter' && saveField(input.current.value, setEdit)}
                     />
             }
-            {!edit && field?.content}
             {
                 !edit && user &&
-                    <button className={`${classes.edit} btn`} onClick={() => setEdit(true)}>
+                    <button className={`${classes.edit} adminBtn`} onClick={() => setEdit(true)}>
                         <Icon className={classes.editIcon} path={mdiPen} />
                     </button>
             }
             {
                 edit && user &&
                     <>
-                        <button className={`${classes.save} btn save`} onClick={() => saveField(input.current.value, setEdit)}>
+                        <button className={`${classes.save} adminBtn save`} onClick={() => saveField(input.current.value, setEdit)}>
                             <Icon path={mdiCheck} />
                         </button>
-                        <button className={`${classes.cancel} btn cancel`} onClick={() => setEdit(false)}>
+                        <button className={`${classes.cancel} adminBtn cancel`} onClick={() => setEdit(false)}>
                             <Icon path={mdiClose} />
                         </button>
                     </>
             }
             {
                 field && user &&
-                    <button className={`${classes.delete} btn delete`} onClick={() => deleteField(setEdit)}>
+                    <button className={`${classes.delete} adminBtn delete`} onClick={() => deleteField(setEdit)}>
                         <Icon path={mdiTrashCan} />
                     </button>
             }

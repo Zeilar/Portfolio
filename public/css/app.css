@@ -79,7 +79,7 @@ input {
   font-family: inherit;
   font-weight: inherit;
   font-size: inherit;
-  padding: 5px 10px;
+  padding: 0.5rem;
   color: inherit;
   outline: 0;
 }
@@ -164,11 +164,11 @@ button {
   border: 0;
 }
 
-button.btn {
-  border: 1px solid var(--color-primary);
-  background: rgba(0, 0, 0, 0.75);
+button.adminBtn {
+  border: 2px solid var(--color-primary);
+  background: rgba(0, 0, 0, 0.5);
   color: var(--color-primary);
-  padding: 5px;
+  padding: 3px;
   height: 2rem;
   width: 2rem;
 }

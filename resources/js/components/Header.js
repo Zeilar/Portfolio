@@ -35,8 +35,8 @@ export default function Header() {
     return (
         <header className={classes.header}> 
             <div className={classes.hero}>
-                <HeroHeaderBig />
-                <Field fieldName="heroButton" Render={HeroButton} />
+                <Field fieldName="heroHeaderBig" render={HeroHeaderBig} />
+                <Field fieldName="heroButton" render={HeroButton} />
             </div>
         </header>
     );

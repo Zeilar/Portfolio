@@ -3,9 +3,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { getField } from '../../../functions';
 import { createUseStyles } from 'react-jss';
 import Icon from '@mdi/react';
-import HeroHeaderSmall from './HeroHeaderSmall';
 
-export default function HeroHeaderBig() {
+export default function HeroHeaderBig({ field, saveField, deleteField }) {
     const styles = createUseStyles({
         header: {
             textShadow: '0 0 8px black',
@@ -39,64 +38,45 @@ export default function HeroHeaderBig() {
     const classes = styles();
 
     const [edit, setEdit] = useState(false);
-    const [header, setHeader] = useState();
     const input = useRef();
 
     const user = sessionStorage.getItem('user');
 
-    async function save() {
-        if (header.content === input.current.value) return setEdit(false);
-
-        const args = {
-            method: 'PATCH',
-            body: JSON.stringify({
-                name: header.name ?? 'heroHeaderBig',
-                content: input.current.value,
-            })
-        };
-
-        await fetch(`/api/fields/${header.id ?? 0}`, args)
-            .then(response => {
-                if (response.status === 200) {
-                    return response.json();
-                }
-            })
-            .then(content => {
-                if (content) {
-                    setHeader(content);
-                    setEdit(false);
-                }
-            });
+    function onEdit() {
+        setEdit(true);
+        console.log(input.current);
     }
-
-    useEffect(() => {
-        if (header == null) getField('heroHeaderBig', setHeader);
-    }, [header, setHeader, getField]);
 
     return (
         <h1 className={classes.header}>
-            {edit && user && <input onKeyDown={(e) => e.key === 'Enter' && save()} className={classes.input} defaultValue={header?.content} ref={input} />}
-            {!edit && header?.content}
+            {
+                edit && user && 
+                    <input 
+                        onKeyDown={(e) => e.key === 'Enter' && saveField(input.current.value, setEdit)}
+                        className={classes.input} defaultValue={field?.content} ref={input}
+                    />
+            }
+            {!edit && field?.content}
             {
                 !edit && user &&
-                    <button className={`${classes.edit} btn`} onClick={() => setEdit(true)}>
+                    <button className={`${classes.edit} adminBtn`} onClick={onEdit}>
                         <Icon className={classes.editIcon} path={mdiPen} />
                     </button>
             }
             {
                 edit && user &&
                     <>
-                        <button className={`${classes.save} btn save`} onClick={save}>
+                        <button className={`${classes.save} adminBtn save`} onClick={() => saveField(input.current.value, setEdit)}>
                             <Icon path={mdiCheck} />
                         </button>
-                        <button className={`${classes.cancel} btn cancel`} onClick={() => setEdit(false)}>
+                        <button className={`${classes.cancel} adminBtn cancel`} onClick={() => setEdit(false)}>
                             <Icon path={mdiClose} />
                         </button>
                     </>
             }
             {
-                user && 
-                    <button className={`${classes.delete} btn delete`}>
+                field && user &&
+                    <button className={`${classes.delete} adminBtn delete`} onClick={() => deleteField(setEdit)}>
                         <Icon path={mdiTrashCan} />
                     </button>
             }
