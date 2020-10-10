@@ -80,6 +80,7 @@ input,
   font-size: inherit;
   padding: 0.5rem;
   color: inherit;
+  display: flex;
   outline: 0;
 }
 

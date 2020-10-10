@@ -1,11 +1,11 @@
 import { mdiPen, mdiClose, mdiCheck, mdiTrashCan } from '@mdi/js';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import Icon from '@mdi/react';
 
 export default function HeroHeaderBig({ field, saveField, deleteField }) {
     const styles = createUseStyles({
-        header: {
+        field: {
             textShadow: '0 0 8px black',
             justifyContent: 'center',
             fontFamily: 'Nunito',
@@ -48,14 +48,13 @@ export default function HeroHeaderBig({ field, saveField, deleteField }) {
 
     function saveOnEnter(e) {
         if (e.key === 'Enter' && !e.shiftKey) {
-            console.log(input.current.innerHTML);
             saveField(input.current.innerHTML, setEdit);
             e.preventDefault();
         }
     }
 
     return (
-        <h1 className={classes.header}>
+        <h1 className={classes.field}>
             {
                 user &&
                     <div

@@ -49,8 +49,6 @@ svg {
 }
 
 input, [contenteditable=true] {
-    // border: 1px solid var(--color-primary);
-    // background: rgba(0, 0, 0, 0.75);
     letter-spacing: inherit;
     text-shadow: inherit;
     font-family: inherit;
@@ -58,5 +56,6 @@ input, [contenteditable=true] {
     font-size: inherit;
     padding: 0.5rem;
     color: inherit;
+    display: flex;
     outline: 0;
 }
