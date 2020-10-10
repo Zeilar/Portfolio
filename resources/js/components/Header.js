@@ -28,6 +28,7 @@ export default function Header() {
             display: 'flex',
             height: '100%',
             width: '100%',
+            padding: 15,
         },
     });
     const classes = styles();

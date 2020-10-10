@@ -1,6 +1,5 @@
 import { mdiPen, mdiClose, mdiCheck, mdiTrashCan } from '@mdi/js';
 import React, { useState, useRef, useEffect } from 'react';
-import { getField } from '../../../functions';
 import { createUseStyles } from 'react-jss';
 import Icon from '@mdi/react';
 
@@ -8,31 +7,36 @@ export default function HeroHeaderBig({ field, saveField, deleteField }) {
     const styles = createUseStyles({
         header: {
             textShadow: '0 0 8px black',
-            textTransform: 'uppercase',
+            justifyContent: 'center',
             fontFamily: 'Nunito',
             alignItems: 'center',
+            textAlign: 'center',
             letterSpacing: 1,
             fontSize: '3rem',
             fontWeight: 500,
             display: 'flex',
             color: 'white',
         },
+        buttons: {
+            display: 'flex',
+            marginLeft: 20,
+        },
         edit: {
-            marginLeft: 10,
-            height: '2rem',
-            width: '2rem',
+            
         },
         save: {
-            marginLeft: 10,
+            
         },
         cancel: {
             marginLeft: 10,
         },
         delete: {
-            marginLeft: 10,
+            marginLeft: 20,
         },
         input: {
-            textAlign: 'center',
+            '&.hidden': {
+                display: 'none',
+            }
         },
     });
     const classes = styles();
@@ -42,44 +46,51 @@ export default function HeroHeaderBig({ field, saveField, deleteField }) {
 
     const user = sessionStorage.getItem('user');
 
-    function onEdit() {
-        setEdit(true);
-        console.log(input.current);
+    function saveOnEnter(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            console.log(input.current.innerHTML);
+            saveField(input.current.innerHTML, setEdit);
+            e.preventDefault();
+        }
     }
 
     return (
         <h1 className={classes.header}>
             {
-                edit && user && 
-                    <input 
-                        onKeyDown={(e) => e.key === 'Enter' && saveField(input.current.value, setEdit)}
-                        className={classes.input} defaultValue={field?.content} ref={input}
-                    />
+                user &&
+                    <div
+                        className={`${classes.input} ${!edit ? 'hidden' : ''}`} ref={input}
+                        onKeyDown={saveOnEnter} contentEditable suppressContentEditableWarning
+                    >
+                        <span dangerouslySetInnerHTML={{ __html: field?.content }} />
+                    </div>
             }
-            {!edit && field?.content}
-            {
-                !edit && user &&
-                    <button className={`${classes.edit} adminBtn`} onClick={onEdit}>
-                        <Icon className={classes.editIcon} path={mdiPen} />
-                    </button>
-            }
-            {
-                edit && user &&
-                    <>
-                        <button className={`${classes.save} adminBtn save`} onClick={() => saveField(input.current.value, setEdit)}>
-                            <Icon path={mdiCheck} />
+            {!edit && <span dangerouslySetInnerHTML={{ __html: field?.content }} />}
+            <div className={classes.buttons}>
+                {
+                    !edit && user &&
+                        <button className={`${classes.edit} adminBtn`} onClick={() => setEdit(true)}>
+                            <Icon className={classes.editIcon} path={mdiPen} />
                         </button>
-                        <button className={`${classes.cancel} adminBtn cancel`} onClick={() => setEdit(false)}>
-                            <Icon path={mdiClose} />
+                }
+                {
+                    edit && user &&
+                        <>
+                            <button className={`${classes.save} adminBtn save`} onClick={() => saveField(input.current.innerHTML, setEdit)}>
+                                <Icon path={mdiCheck} />
+                            </button>
+                            <button className={`${classes.cancel} adminBtn cancel`} onClick={() => setEdit(false)}>
+                                <Icon path={mdiClose} />
+                            </button>
+                        </>
+                }
+                {
+                    field && user &&
+                        <button className={`${classes.delete} adminBtn delete`} onClick={() => deleteField(setEdit)}>
+                            <Icon path={mdiTrashCan} />
                         </button>
-                    </>
-            }
-            {
-                field && user &&
-                    <button className={`${classes.delete} adminBtn delete`} onClick={() => deleteField(setEdit)}>
-                        <Icon path={mdiTrashCan} />
-                    </button>
-            }
+                }
+            </div>
         </h1>
     );
 }
