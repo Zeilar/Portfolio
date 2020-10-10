@@ -9,9 +9,9 @@ class Project extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $appends = ['technologies'];
+    public $timestamps = false;
+    protected $guarded = [];
 
     public function technologies() {
         return $this->belongsToMany(Technology::class);

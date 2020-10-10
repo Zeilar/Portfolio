@@ -106,8 +106,13 @@ class DatabaseSeeder extends Seeder
         $project->technologies()->sync($query->pluck('id'));
 
         Field::create([
-            'name' => 'heroHeaderBig',
-            'content' => 'Philip Angelin',
+            'name' => 'heroHeader',
+            'content' => 'Hi, I\'m Philip',
+        ]);
+
+        Field::create([
+            'name' => 'heroText',
+            'content' => 'I am a fullstack web developer. That means I can work in every stack of the production, be it frontend or backend. I currently excel at the frameworks; Laravel, Node, React and Vue. You can find some of my projects below, featuring the mentioned frameworks.',
         ]);
     }
 }

@@ -1,8 +1,10 @@
 a {
+    transition: all 0.1s linear;
     color: var(--color-link);
     text-decoration: none;
 
     &:hover {
+        color: var(--color-primary);
         text-decoration: underline;
     }
 }
@@ -15,26 +17,20 @@ button {
     border: 0;
 
     &.adminBtn {
-        border: 2px solid var(--color-primary);
-        background: rgba(0, 0, 0, 0.5);
         color: var(--color-primary);
-        padding: 3px;
         height: 2rem;
         width: 2rem;
     }
 
     &.save {
-        border-color: var(--color-secondary);
         color: var(--color-secondary);
     }
 
     &.cancel {
-        border-color: yellow;
         color: yellow;
     }
 
     &.delete {
-        border-color: red;
         color: red;
     }
 }

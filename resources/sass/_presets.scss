@@ -7,25 +7,18 @@
 
 :root {
     scroll-behavior: smooth;
-
-    --color-secondary: rgb(0, 179, 101);
-    --color-primary: rgb(97, 218, 251);
 }
 
 ::selection {
-    background: var(--color-primary);
-    color: white;
+    color: var(--color-primary);
 }
 
 body {
-    background: var(--color-bg);
+    background-color: var(--color-bg);
+    color: var(--color-text);
     font-family: 'Roboto';
     overflow-x: hidden;
-    color: white;
-
-    @media (max-width: 768px) {
-        
-    }
+    font-size: 1.5rem;
 }
 
 #app {
@@ -48,14 +41,19 @@ svg {
     width: 100%;
 }
 
-input, [contenteditable=true] {
+input, [contenteditable=true], ::placeholder {
     letter-spacing: inherit;
     text-shadow: inherit;
     font-family: inherit;
     font-weight: inherit;
     font-size: inherit;
-    padding: 0.5rem;
+    background: none;
     color: inherit;
     display: flex;
     outline: 0;
+    border: 0;
+}
+
+::placeholder {
+    opacity: 0.35;
 }

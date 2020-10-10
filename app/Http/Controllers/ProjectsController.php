@@ -7,10 +7,6 @@ use App\Models\Project;
 
 class ProjectsController extends Controller
 {
-    public function __construct() {
-        // $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +25,16 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // if (!auth()->user()) return abort(401);
+
+        $json = json_decode($request->getContent());
+
+        $project = Project::create([
+            'title' => $json->title,
+            'link' => $json->link,
+        ]);
+
+        return response()->json($project);
     }
 
     /**
@@ -52,6 +57,11 @@ class ProjectsController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        // if (!auth()->user()) return abort(401);
+
+        $projectId = $project->id;
+        $project->delete();
+
+        return response()->json($projectId);
     }
 }

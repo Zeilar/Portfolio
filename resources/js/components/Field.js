@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { createUseStyles } from 'react-jss';
+import React, { useState, useEffect } from 'react';
 import { getField } from '../functions';
 
-export default function Field({ render: Render, fieldName }) {
+export default function Field({ render: Render, fieldName, props }) {
     const [field, setField] = useState();
 
     async function save(input, setEdit) {
@@ -53,5 +52,5 @@ export default function Field({ render: Render, fieldName }) {
         if (field == null) getField(fieldName, setField);
     }, [field, setField, getField]);
 
-    return <Render field={field} saveField={save} deleteField={deleteField} />;
+    return <Render {...props} field={field} saveField={save} deleteField={deleteField} />;
 }
