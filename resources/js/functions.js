@@ -10,8 +10,21 @@ async function getField(field, setField) {
 
 async function authenticate() {
     await fetch('/api/authenticate')
-        .then(response => response.json())
-        .then(user => sessionStorage.setItem('user', true));
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            }
+        })
+        .then(user => {
+            try {
+                user = JSON.parse(user);
+            } catch (e) {
+                user = false;
+            }
+            if (user) {
+                sessionStorage.setItem('user', user);
+            }
+        });
 }
 
 export {

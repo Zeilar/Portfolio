@@ -14,6 +14,8 @@ export default function Projects() {
             height: '100vh',
         },
         header: {
+            fontFamily: 'Montserrat',
+            letterSpacing: 1,
             marginBottom: 50,
             fontSize: '3rem',
         },
@@ -120,7 +122,7 @@ export default function Projects() {
                             <button className={`${classes.addSubmit} adminBtn`} onClick={addProject}>
                                 <Icon path={mdiCheck} />
                             </button>
-                            <button className={`${classes.addCancel} adminBtn delete`} onClick={() => setAdding(false)}>
+                            <button className={`${classes.addCancel} adminBtn cancel`} onClick={() => setAdding(false)}>
                                 <Icon path={mdiClose} />
                             </button>
                         </div>

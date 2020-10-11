@@ -8,15 +8,24 @@ export default function HeroHeader({ field, saveField, deleteField }) {
         field: {
             textShadow: '0 0 2px black',
             justifyContent: 'center',
+            fontFamily: 'Montserrat',
             alignItems: 'center',
-            fontFamily: 'Inter',
             textAlign: 'center',
+            letterSpacing: 1,
             fontSize: '3rem',
             display: 'flex',
+            '@media (max-width: 1200px)': {
+                flexDirection: 'column',
+                fontSize: '2.5rem',
+            },
         },
         buttons: {
             display: 'flex',
             marginLeft: 20,
+            '@media (max-width: 1200px)': {
+                marginLeft: 0,
+                marginTop: 20,
+            },
         },
         edit: {
             

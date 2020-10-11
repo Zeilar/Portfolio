@@ -9,7 +9,6 @@ export default function Project({ project, setProjects }) {
             textShadow: '0 0 2px black',
             justifyContent: 'center',
             alignItems: 'center',
-            fontFamily: 'Inter',
             textAlign: 'center',
             fontWeight: 500,
             lineHeight: 1.5,
@@ -38,7 +37,7 @@ export default function Project({ project, setProjects }) {
             },
         },
         delete: {
-            marginLeft: 20,
+            marginLeft: 30,
         },
     });
     const classes = styles();

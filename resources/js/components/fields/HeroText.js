@@ -11,15 +11,26 @@ export default function HeroText({ field, saveField, deleteField }) {
             alignItems: 'center',
             fontFamily: 'Inter',
             textAlign: 'center',
-            padding: '0 25vw',
-            fontWeight: 500,
+            padding: [0, 15],
             lineHeight: 1.5,
+            fontWeight: 500,
             display: 'flex',
             marginTop: 30,
+            maxWidth: 800,
+            '@media (max-width: 768px)': {
+                maxWidth: 'unset',
+            },
+            '@media (max-width: 1200px)': {
+                flexDirection: 'column',
+            },
         },
         buttons: {
             display: 'flex',
             marginLeft: 20,
+            '@media (max-width: 1200px)': {
+                marginLeft: 0,
+                marginTop: 20,
+            },
         },
         edit: {
             
