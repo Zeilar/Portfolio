@@ -45,6 +45,8 @@ export default function Project({ project, setProjects }) {
     const user = sessionStorage.getItem('user')
 
     async function deleteProject() {
+        if (!confirm('Delete project?')) return;
+
         await fetch(`/api/projects/${project.id}`, { method: 'DELETE' })
             .then(response => {
                 if (response.status === 200) {

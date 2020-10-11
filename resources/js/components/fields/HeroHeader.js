@@ -21,7 +21,7 @@ export default function HeroHeader({ field, saveField, deleteField }) {
         },
         buttons: {
             display: 'flex',
-            marginLeft: 20,
+            marginLeft: 40,
             '@media (max-width: 1200px)': {
                 marginLeft: 0,
                 marginTop: 20,
