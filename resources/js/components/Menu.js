@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { mdiClose, mdiExitToApp, mdiMenu } from '@mdi/js';
+import { mdiClose, mdiChevronRight, mdiExitToApp, mdiMenu } from '@mdi/js';
+import React, { useState, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { NavLink } from 'react-router-dom';
 import Icon from '@mdi/react';
@@ -15,10 +15,15 @@ export default function Menu() {
         },
         navbar: {
             backgroundColor: 'rgb(15, 15, 15)',
+            transition: 'all 0.5s linear',
+            boxShadow: '0 0 8px 0 black',
             position: 'relative',
             height: '100%',
             width: '100%',
             zIndex: 100,
+            '&.closed': {
+                transform: 'translateX(calc(100% + 10px))',
+            },
         },
         open: {
             transition: 'all 0.1s linear',
@@ -26,18 +31,27 @@ export default function Menu() {
             color: 'inherit',
             display: 'flex',
             width: 40,
-            right: 0,
-            top: 0,
+            right: 40,
+            top: 40,
             '&:hover': {
                 color: 'white',
             },
         },
         close: {
+            boxShadow: '0 0 4px 0 rgba(0, 0, 0, 0.5)',
+            backgroundColor: 'rgb(30, 30, 30)',
+            transform: 'translate(-50%, -50%)',
             transition: 'all 0.1s linear',
+            position: 'absolute',
             color: 'inherit',
+            borderRadius: 2,
             display: 'flex',
-            width: 40,
+            height: 50,
+            top: '50%',
+            width: 20,
+            left: 0,
             '&:hover': {
+                transform: 'translate(-50%, -50%) scale(1.05)',
                 color: 'white',
             },
         },
@@ -63,7 +77,6 @@ export default function Menu() {
             },
         },
         login: {
-            borderBottom: '4px solid var(--color-bg)',
             flexDirection: 'column',
             fontSize: '1rem',
             display: 'flex',
@@ -94,8 +107,9 @@ export default function Menu() {
             transition: 'all 0.1s linear',
             width: 'fit-content',
             padding: [10, 15],
+            letterSpacing: 1,
             color: 'inherit',
-            marginTop: 5,
+            marginTop: 10,
             '&:focus': {
                 boxShadow: '0 0 0 1px var(--color-primary)',
             },
@@ -117,12 +131,33 @@ export default function Menu() {
             marginTop: 15,
             color: 'red',
         },
+        divider: {
+            backgroundColor: 'rgb(30, 30, 30)',
+            width: 'calc(100% - 40px)',
+            margin: '10px auto',
+            borderRadius: 4,
+            border: 0,
+            height: 2,
+        },
+        closeSecondary: {
+            transition: 'all 0.1s linear',
+            position: 'absolute',
+            color: 'inherit',
+            display: 'flex',
+            width: 40,
+            right: 10,
+            top: 10,
+            '&:hover': {
+                color: 'white',
+            },
+        },
     });
     const classes = styles();
 
     const [user, setUser] = useState(sessionStorage.getItem('user'));
     const [usernameError, setUsernameError] = useState();
     const [passwordError, setPasswordError] = useState();
+    const [open, setOpen] = useState(false);
     const username = useRef();
     const password = useRef();
 
@@ -143,7 +178,7 @@ export default function Menu() {
 
     function logout() {
         sessionStorage.removeItem('user');
-        location.reload();
+        location.href = '/api/logout';
     }
 
     async function login() {
@@ -175,11 +210,19 @@ export default function Menu() {
 
     return (
         <header className={classes.header}>
-            <button className={classes.open}>
+            <button className={classes.open} onClick={() => setOpen(true)} title="Open">
                 <Icon className={classes.icon} path={mdiMenu} />
             </button>
 
-            <nav className={classes.navbar}>
+            <nav className={`${classes.navbar} ${!open ? 'closed' : ''}`}>
+                <button className={classes.closeSecondary} onClick={() => setOpen(false)} title="Close">
+                    <Icon className={classes.icon} path={mdiClose} />
+                </button>
+
+                <button className={classes.close} onClick={() => setOpen(false)} title="Close">
+                    <Icon className={classes.icon} path={mdiChevronRight} />
+                </button>
+
                 <div className={classes.login}>
                     {
                         user
@@ -195,20 +238,10 @@ export default function Menu() {
                                 </p>
 
                                 <form className={classes.inputs} onSubmit={loginSubmit}>
-                                    {
-                                        usernameError &&
-                                            <p className={classes.error}>
-                                                {usernameError}
-                                            </p>
-                                    }
+                                    {usernameError && <p className={classes.error}>{usernameError}</p>}
                                     <input className={classes.input} type="text" onChange={checkInputs} placeholder="Username" ref={username} />
 
-                                    {
-                                        passwordError &&
-                                            <p className={classes.error}>
-                                                {passwordError}
-                                            </p>
-                                    }
+                                    {passwordError && <p className={classes.error}>{passwordError}</p>}
                                     <input className={classes.input} type="password" onChange={checkInputs} placeholder="Password" ref={password} />
 
                                     <button className={classes.loginSubmit} onClick={loginSubmit}>
@@ -219,9 +252,7 @@ export default function Menu() {
                     }
                 </div>
 
-                <button className={classes.close}>
-                    <Icon className={classes.icon} path={mdiClose} />
-                </button>
+                <hr className={classes.divider} />
 
                 <ul className={classes.navlist}>
                     <li className={classes.navitem}>

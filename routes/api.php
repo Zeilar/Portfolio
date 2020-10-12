@@ -19,6 +19,10 @@ Route::post('/login', function(Request $request) {
     }
     return response(['success' => true]);
 });
+Route::get('logout', function() {
+    Auth::logout();
+    return redirect('/');
+});
 Route::get('authenticate', function() {
     return response('', auth()->user() ? 200 : 401);
 });
