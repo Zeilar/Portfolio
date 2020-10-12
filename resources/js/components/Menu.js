@@ -229,12 +229,12 @@ export default function Menu() {
                         </NavLink>
                     </li>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/about" exact>
+                        <NavLink className={classes.navlink} to="/about">
                             About me
                         </NavLink>
                     </li>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/cases" exact>
+                        <NavLink className={classes.navlink} to="/cases">
                             Cases
                         </NavLink>
                     </li>
