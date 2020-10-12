@@ -7,22 +7,27 @@ import Icon from '@mdi/react';
 export default function Menu() {
     const styles = createUseStyles({
         header: {
-            position: 'fixed',
-            height: '100vh',
-            width: '20vw',
-            right: 0,
-            top: 0,
+
         },
         navbar: {
             backgroundColor: 'rgb(15, 15, 15)',
             transition: 'all 0.5s linear',
             boxShadow: '0 0 8px 0 black',
             position: 'relative',
-            height: '100%',
-            width: '100%',
+            position: 'fixed',
+            height: '100vh',
+            width: '20vw',
             zIndex: 100,
+            right: 0,
+            top: 0,
             '&.closed': {
                 transform: 'translateX(calc(100% + 10px))',
+            },
+            '@media (max-width: 1200px)': {
+                width: '35%',
+            },
+            '@media (max-width: 768px)': {
+                width: '50%',
             },
         },
         open: {
@@ -30,11 +35,19 @@ export default function Menu() {
             position: 'fixed',
             color: 'inherit',
             display: 'flex',
+            zIndex: 100,
             width: 40,
             right: 40,
             top: 40,
             '&:hover': {
                 color: 'white',
+            },
+            '@media (max-width: 768px)': {
+                boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.25)',
+                backgroundColor: 'var(--color-bg)',
+                borderRadius: 4,
+                right: 10,
+                top: 10,
             },
         },
         close: {

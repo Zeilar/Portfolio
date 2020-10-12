@@ -6,7 +6,18 @@ import Field from './Field';
 
 export default function Hero() {
     const styles = createUseStyles({
+        '@keyframes fadeIn': {
+            from: {
+                transform: 'translateY(-50px)',
+                opacity: 0,
+            },
+            to: {
+                transform: 'translateY(0)',
+                opacity: 1,
+            },
+        },
         hero: {
+            animation: '$fadeIn 0.75s ease-out forwards',
             justifyContent: 'center',
             flexDirection: 'column',
             alignItems: 'center',
