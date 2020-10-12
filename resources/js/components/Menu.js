@@ -52,7 +52,7 @@ export default function Menu() {
         },
         close: {
             boxShadow: '0 0 4px 0 rgba(0, 0, 0, 0.5)',
-            backgroundColor: 'rgb(30, 30, 30)',
+            backgroundColor: 'rgb(25, 25, 25)',
             transform: 'translate(-50%, -50%)',
             transition: 'all 0.1s linear',
             position: 'absolute',
