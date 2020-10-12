@@ -1,11 +1,22 @@
 import { mdiPen, mdiClose, mdiCheck, mdiTrashCan } from '@mdi/js';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 import Icon from '@mdi/react';
 
-export default function HeroHeader({ field, saveField, deleteField }) {
+export default function HeroHeader({ field, saveField, deleteField, setHeaderLoaded }) {
     const styles = createUseStyles({
+        '@keyframes fadeIn': {
+            from: {
+                transform: 'translateY(-50px)',
+                opacity: 0,
+            },
+            to: {
+                transform: 'translateY(0)',
+                opacity: 1,
+            },
+        },
         field: {
+            animation: '$fadeIn 0.75s ease-out forwards',
             textShadow: '0 0 2px black',
             justifyContent: 'center',
             fontFamily: 'Montserrat',
@@ -57,6 +68,10 @@ export default function HeroHeader({ field, saveField, deleteField }) {
             e.preventDefault();
         }
     }
+
+    useEffect(() => {
+        if (field) setHeaderLoaded(true);
+    }, [setHeaderLoaded, field]);
 
     return (
         <h1 className={classes.field}>

@@ -1,11 +1,22 @@
 import { mdiPen, mdiClose, mdiCheck, mdiTrashCan } from '@mdi/js';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 import Icon from '@mdi/react';
 
-export default function HeroText({ field, saveField, deleteField }) {
+export default function HeroText({ field, saveField, deleteField, setTextLoaded }) {
     const styles = createUseStyles({
+        '@keyframes fadeIn': {
+            from: {
+                transform: 'translateY(-50px)',
+                opacity: 0,
+            },
+            to: {
+                transform: 'translateY(0)',
+                opacity: 1,
+            },
+        },
         field: {
+            animation: '$fadeIn 0.75s ease-out forwards',
             textShadow: '0 0 2px black',
             justifyContent: 'center',
             alignItems: 'center',
@@ -55,13 +66,16 @@ export default function HeroText({ field, saveField, deleteField }) {
     const [edit, setEdit] = useState(false);
     const input = useRef();
 
-
     function saveOnEnter(e) {
         if (e.key === 'Enter' && !e.shiftKey) {
             saveField(input.current.innerHTML, setEdit);
             e.preventDefault();
         }
     }
+
+    useEffect(() => {
+        if (field) setTextLoaded(true);
+    }, [setTextLoaded, field]);
 
     return (
         <div className={classes.field}>
