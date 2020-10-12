@@ -3,6 +3,10 @@ import { createUseStyles } from 'react-jss';
 import { mdiTrashCan } from '@mdi/js';
 import Icon from '@mdi/react';
 
+
+// import test from '@storage/medias/linkedin.svg';
+// console.log(test);
+
 export default function Project({ project, setProjects }) {
     const styles = createUseStyles({
         project: {
@@ -42,7 +46,7 @@ export default function Project({ project, setProjects }) {
     });
     const classes = styles();
 
-    const user = sessionStorage.getItem('user')
+    const [user, setUser] = useState(sessionStorage.getItem('user'));
 
     async function deleteProject() {
         if (!confirm('Delete project?')) return;

@@ -57,7 +57,7 @@ export default function Projects() {
     const projectTitle = useRef();
     const projectLink = useRef();
 
-    const user = sessionStorage.getItem('user');
+    const [user, setUser] = useState(sessionStorage.getItem('user'));
 
     async function getProjects() {
         await fetch('/api/projects')

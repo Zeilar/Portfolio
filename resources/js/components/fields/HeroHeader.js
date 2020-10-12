@@ -47,10 +47,9 @@ export default function HeroHeader({ field, saveField, deleteField }) {
     });
     const classes = styles();
 
+    const [user, setUser] = useState(sessionStorage.getItem('user'));
     const [edit, setEdit] = useState(false);
     const input = useRef();
-
-    const user = sessionStorage.getItem('user');
 
     function saveOnEnter(e) {
         if (e.key === 'Enter' && !e.shiftKey) {

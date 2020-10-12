@@ -19,6 +19,7 @@ export default function HeroText({ field, saveField, deleteField }) {
             maxWidth: 800,
             '@media (max-width: 768px)': {
                 maxWidth: 'unset',
+                fontSize: '1rem',
             },
             '@media (max-width: 1200px)': {
                 flexDirection: 'column',
@@ -50,10 +51,10 @@ export default function HeroText({ field, saveField, deleteField }) {
     });
     const classes = styles();
 
+    const [user, setUser] = useState(sessionStorage.getItem('user'));
     const [edit, setEdit] = useState(false);
     const input = useRef();
 
-    const user = sessionStorage.getItem('user');
 
     function saveOnEnter(e) {
         if (e.key === 'Enter' && !e.shiftKey) {
