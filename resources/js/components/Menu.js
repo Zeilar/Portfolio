@@ -131,6 +131,7 @@ export default function Menu() {
         logout: {
             transition: 'all 0.1s linear',
             alignItems: 'center',
+            fontSize: '1.5rem',
             color: 'inherit',
             display: 'flex',
             '&:hover': {
@@ -175,11 +176,6 @@ export default function Menu() {
     const username = useRef();
     const password = useRef();
 
-    function checkInputs() {
-        setUsernameError(username.current.value === '' ? 'This field is required' : false);
-        setPasswordError(password.current.value === '' ? 'This field is required' : false);
-    }
-
     function loginSubmit(e) {
         e.preventDefault();
 
@@ -187,7 +183,8 @@ export default function Menu() {
             login();
         }
 
-        checkInputs();
+        setUsernameError(username.current.value === '' ? 'This field is required' : false);
+        setPasswordError(password.current.value === '' ? 'This field is required' : false);
     }
 
     function logout() {
@@ -253,10 +250,10 @@ export default function Menu() {
 
                                 <form className={classes.inputs} onSubmit={loginSubmit}>
                                     {usernameError && <p className={classes.error}>{usernameError}</p>}
-                                    <input className={classes.input} type="text" onChange={checkInputs} placeholder="Username" ref={username} />
+                                    <input className={classes.input} type="text" placeholder="Username" ref={username} />
 
                                     {passwordError && <p className={classes.error}>{passwordError}</p>}
-                                    <input className={classes.input} type="password" onChange={checkInputs} placeholder="Password" ref={password} />
+                                    <input className={classes.input} type="password" placeholder="Password" ref={password} />
 
                                     <button className={classes.loginSubmit} onClick={loginSubmit}>
                                         Login
