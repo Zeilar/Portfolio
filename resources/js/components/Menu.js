@@ -81,6 +81,7 @@ export default function Menu() {
             margin: [10, 0],
         },
         navlink: {
+            textAlign: 'center',
             color: 'inherit',
             display: 'flex',
             '&:hover, &.active': {
