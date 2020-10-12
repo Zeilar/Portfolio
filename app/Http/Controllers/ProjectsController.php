@@ -25,7 +25,7 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        // if (!auth()->user()) return abort(401);
+        if (!auth()->user()) return abort(401);
 
         $json = json_decode($request->getContent());
 
@@ -57,7 +57,7 @@ class ProjectsController extends Controller
      */
     public function destroy(Project $project)
     {
-        // if (!auth()->user()) return abort(401);
+        if (!auth()->user()) return abort(401);
 
         $projectId = $project->id;
         $project->delete();

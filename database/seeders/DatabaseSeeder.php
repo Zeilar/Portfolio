@@ -112,7 +112,7 @@ class DatabaseSeeder extends Seeder
 
         Field::create([
             'name' => 'heroText',
-            'content' => 'I\'m a Swedish fullstack web developer. That means I can work in every stack of the production, be it frontend or backend. I currently excel at the frameworks; Laravel, Node, React and Vue. You can find some of my projects below, featuring the mentioned frameworks.',
+            'content' => 'I\'m a fullstack web developer. That means I can work in every stack of the production, be it frontend or backend. I currently excel at the frameworks; Laravel, Node, React and Vue. You can find some of my projects below, featuring the mentioned frameworks.',
         ]);
     }
 }

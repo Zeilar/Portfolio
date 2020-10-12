@@ -38,8 +38,8 @@ class FieldsController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        // TODO: Login form
-        // if (!auth()->user()) return abort(401);
+        if (!auth()->user()) return abort(401);
+        
         $json = json_decode($request->getContent());
         $field = Field::firstOrCreate(
             ['id' => $id],
@@ -63,7 +63,7 @@ class FieldsController extends Controller
      */
     public function destroy(Field $field)
     {
-        // TODO: if (!auth()->user()) return abort(401);
+        if (!auth()->user()) return abort(401);
 
         return response()->json($field->delete());
     }
