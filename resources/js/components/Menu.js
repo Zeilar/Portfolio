@@ -48,6 +48,7 @@ export default function Menu() {
             flexDirection: 'column',
             alignItems: 'center',
             display: 'flex',
+            padding: 20,
         },
         navitem: {
             margin: [10, 0],
