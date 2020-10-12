@@ -139,8 +139,8 @@ export default function Menu() {
             },
         },
         logoutIcon: {
+            width: '1.5rem',
             marginLeft: 5,
-            width: '1rem',
         },
         error: {
             marginTop: 15,
