@@ -1,5 +1,5 @@
+import { mdiCheck, mdiClose, mdiLoading, mdiPlus } from '@mdi/js';
 import React, { useState, useEffect, useRef } from 'react';
-import { mdiCheck, mdiClose, mdiPlus } from '@mdi/js';
 import { createUseStyles } from 'react-jss';
 import Project from './Project';
 import Icon from '@mdi/react';
@@ -48,6 +48,9 @@ export default function Projects() {
         },
         addCancel: {
             marginLeft: 10,
+        },
+        loading: {
+            width: '4rem',
         },
     });
     const classes = styles();
@@ -110,6 +113,8 @@ export default function Projects() {
             <h2 className={classes.header}>
                 Projects
             </h2>
+
+            {!projects?.length && <Icon className={classes.loading} path={mdiLoading} spin={1} />}
 
             {projects?.map(project => <Project project={project} setProjects={setProjects} key={project.id} />)}
 
