@@ -5,18 +5,7 @@ import Icon from '@mdi/react';
 
 export default function HeroText({ field, saveField, deleteField, setTextLoaded }) {
     const styles = createUseStyles({
-        '@keyframes fadeIn': {
-            from: {
-                transform: 'translateY(-50px)',
-                opacity: 0,
-            },
-            to: {
-                transform: 'translateY(0)',
-                opacity: 1,
-            },
-        },
         field: {
-            animation: '$fadeIn 0.75s ease-out forwards',
             textShadow: '0 0 2px black',
             justifyContent: 'center',
             alignItems: 'center',
@@ -28,6 +17,9 @@ export default function HeroText({ field, saveField, deleteField, setTextLoaded 
             display: 'flex',
             marginTop: 30,
             maxWidth: 800,
+            '&.animation': {
+                animation: '$fadeIn 0.75s ease-out forwards',
+            },
             '@media (max-width: 768px)': {
                 maxWidth: 'unset',
                 fontSize: '1rem',
@@ -82,31 +74,34 @@ export default function HeroText({ field, saveField, deleteField, setTextLoaded 
             <p className={classes.input} ref={input} onKeyDown={saveOnEnter} contentEditable={edit} suppressContentEditableWarning>
                 {field?.content}
             </p>
-            <div className={classes.buttons}>
-                {
-                    !edit && user &&
-                        <button className={`${classes.edit} adminBtn`} onClick={() => setEdit(true)}>
-                            <Icon className={classes.editIcon} path={mdiPen} />
-                        </button>
-                }
-                {
-                    edit && user &&
-                        <>
-                            <button className={`${classes.save} adminBtn save`} onClick={() => saveField(input.current.innerHTML, setEdit)}>
-                                <Icon path={mdiCheck} />
-                            </button>
-                            <button className={`${classes.cancel} adminBtn cancel`} onClick={() => setEdit(false)}>
-                                <Icon path={mdiClose} />
-                            </button>
-                        </>
-                }
-                {
-                    field && user &&
-                        <button className={`${classes.delete} adminBtn delete`} onClick={() => deleteField(setEdit)}>
-                            <Icon path={mdiTrashCan} />
-                        </button>
-                }
-            </div>
+            {
+                field &&
+                    <div className={classes.buttons}>
+                        {
+                            !edit && user &&
+                                <button className={`${classes.edit} adminBtn`} onClick={() => setEdit(true)}>
+                                    <Icon className={classes.editIcon} path={mdiPen} />
+                                </button>
+                        }
+                        {
+                            edit && user &&
+                                <>
+                                    <button className={`${classes.save} adminBtn save`} onClick={() => saveField(input.current.innerHTML, setEdit)}>
+                                        <Icon path={mdiCheck} />
+                                    </button>
+                                    <button className={`${classes.cancel} adminBtn cancel`} onClick={() => setEdit(false)}>
+                                        <Icon path={mdiClose} />
+                                    </button>
+                                </>
+                        }
+                        {
+                            field && user &&
+                                <button className={`${classes.delete} adminBtn delete`} onClick={() => deleteField(setEdit)}>
+                                    <Icon path={mdiTrashCan} />
+                                </button>
+                        }
+                    </div>
+            }
         </div>
     );
 }
