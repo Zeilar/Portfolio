@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         {{-- Favicon --}}
         <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
@@ -25,7 +25,9 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body>
-        <main id="app"></main>
+        {{-- @php Auth::loginUsingId(1) @endphp --}}
+        {{ var_dump(auth()->user()) }}
+        <main id="app">{{-- React served --}}</main>
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

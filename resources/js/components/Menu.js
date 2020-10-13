@@ -1,4 +1,4 @@
-import { mdiClose, mdiChevronRight, mdiExitToApp, mdiMenu } from '@mdi/js';
+import { mdiClose, mdiChevronDoubleRight, mdiExitToApp, mdiMenu } from '@mdi/js';
 import React, { useState, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { NavLink } from 'react-router-dom';
@@ -11,7 +11,7 @@ export default function Menu() {
         },
         navbar: {
             backgroundColor: 'rgb(15, 15, 15)',
-            transition: 'all 0.5s linear',
+            transition: 'all 0.35s linear',
             boxShadow: '0 0 8px 0 black',
             position: 'relative',
             position: 'fixed',
@@ -50,24 +50,6 @@ export default function Menu() {
                 top: 10,
             },
         },
-        close: {
-            boxShadow: '0 0 4px 0 rgba(0, 0, 0, 0.5)',
-            backgroundColor: 'rgb(25, 25, 25)',
-            transform: 'translate(-50%, -50%)',
-            transition: 'all 0.1s linear',
-            position: 'absolute',
-            color: 'inherit',
-            borderRadius: 2,
-            display: 'flex',
-            height: 50,
-            top: '50%',
-            width: 20,
-            left: 0,
-            '&:hover': {
-                transform: 'translate(-50%, -50%) scale(1.05)',
-                color: 'white',
-            },
-        },
         icon: {
 
         },
@@ -99,6 +81,9 @@ export default function Menu() {
         loginHeader: {
             fontSize: '1.5rem',
             marginBottom: 10,
+            '@media (max-width: 768px)': {
+                fontSize: '1.25rem',
+            },
         },
         inputs: {
             flexDirection: 'column',
@@ -131,16 +116,23 @@ export default function Menu() {
         logout: {
             transition: 'all 0.1s linear',
             alignItems: 'center',
+            width: 'fit-content',
             fontSize: '1.5rem',
             color: 'inherit',
             display: 'flex',
             '&:hover': {
                 color: 'var(--color-primary)',
             },
+            '@media (max-width: 768px)': {
+                fontSize: '1.25rem',
+            },
         },
         logoutIcon: {
             width: '1.5rem',
             marginLeft: 5,
+            '@media (max-width: 768px)': {
+                fontSize: '1.25rem',
+            },
         },
         error: {
             marginTop: 15,
@@ -154,7 +146,7 @@ export default function Menu() {
             border: 0,
             height: 2,
         },
-        closeSecondary: {
+        close: {
             transition: 'all 0.1s linear',
             position: 'absolute',
             color: 'inherit',
@@ -226,12 +218,8 @@ export default function Menu() {
             </button>
 
             <nav className={`${classes.navbar} ${!open ? 'closed' : ''}`}>
-                <button className={classes.closeSecondary} onClick={() => setOpen(false)} title="Close">
-                    <Icon className={classes.icon} path={mdiClose} />
-                </button>
-
                 <button className={classes.close} onClick={() => setOpen(false)} title="Close">
-                    <Icon className={classes.icon} path={mdiChevronRight} />
+                    <Icon className={classes.icon} path={mdiClose} />
                 </button>
 
                 <div className={classes.login}>

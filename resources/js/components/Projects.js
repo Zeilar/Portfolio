@@ -18,6 +18,12 @@ export default function Projects() {
             letterSpacing: 1,
             marginBottom: 50,
             fontSize: '3rem',
+            '@media (max-width: 1200px)': {
+                fontSize: '2.5rem',
+            },
+            '@media (max-width: 768px)': {
+                fontSize: '2rem',
+            },
         },
         add: {
             color: 'var(--color-primary)',

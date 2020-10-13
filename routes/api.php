@@ -12,17 +12,22 @@ Route::resource('fields', FieldsController::class)->except(['edit', 'create', 's
 Route::post('/login', function(Request $request) {
     $json = json_decode($request->getContent());
 
+    if (Auth::attempt(['username' => $json->username, 'password' => $json->password])) {
+        return response(['success' => true]);
+    }
+
     if (!User::where('username', $json->username)->first()) {
         return response(['field' => 'username', 'message' => 'User does not exist', 'success' => false]);
-    } else if (!Auth::attempt(['username' => $json->username, 'password' => $json->password])) {
+    } else {
         return response(['field' => 'password', 'message' => 'Incorrect password', 'success' => false]);
     }
-    return response(['success' => true]);
 });
 Route::get('logout', function() {
     Auth::logout();
     return redirect('/');
 });
-Route::get('authenticate', function() {
+Route::get('authenticate', function(Request $request) {
+    // Auth::loginUsingId(1);
+    return dd($request->user(), auth()->user());
     return response('', auth()->user() ? 200 : 401);
 });

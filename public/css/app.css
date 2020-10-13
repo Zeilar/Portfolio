@@ -35,25 +35,31 @@ body {
   font-size: 1.5rem;
 }
 
+@media (max-width: 768px) {
+  body {
+    font-size: 1.25rem;
+  }
+}
+
 #app {
+  background-color: inherit;
   flex-direction: column;
-  background: inherit;
   min-height: 100vh;
   display: flex;
 }
 
-*::-moz-placeholder {
+::-moz-placeholder {
   -moz-user-select: none;
        user-select: none;
 }
 
-*:-ms-input-placeholder {
+:-ms-input-placeholder {
   -ms-user-select: none;
       user-select: none;
 }
 
 img,
-*::placeholder {
+::placeholder {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;

@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     list-style: none;
     padding: 0;
@@ -19,16 +21,21 @@ body {
     font-family: 'Roboto';
     overflow-x: hidden;
     font-size: 1.5rem;
+
+    @media (max-width: 768px) {
+        font-size: 1.25rem;
+    }
 }
 
 #app {
+    background-color: inherit;
     flex-direction: column;
-    background: inherit;
     min-height: 100vh;
     display: flex;
 }
 
-img, *::placeholder {
+img,
+::placeholder {
     user-select: none;
 }
 
@@ -41,7 +48,9 @@ svg {
     width: 100%;
 }
 
-input, [contenteditable=true], ::placeholder {
+input,
+[contenteditable=true],
+::placeholder {
     letter-spacing: inherit;
     text-shadow: inherit;
     font-family: inherit;

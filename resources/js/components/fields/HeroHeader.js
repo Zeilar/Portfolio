@@ -28,6 +28,9 @@ export default function HeroHeader({ field, saveField, deleteField, setHeaderLoa
                 flexDirection: 'column',
                 fontSize: '2.5rem',
             },
+            '@media (max-width: 768px)': {
+                fontSize: '2rem',
+            },
         },
         buttons: {
             display: 'flex',
