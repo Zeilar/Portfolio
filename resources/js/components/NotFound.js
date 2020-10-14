@@ -7,6 +7,10 @@ export default function NotFound() {
             fontFamily: 'Barlow',
             fontSize: '4rem',
             margin: 'auto',
+            padding: 15,
+            '@media (max-width: 768px)': {
+                fontSize: '3rem',
+            },
         },
     });
     const classes = styles();

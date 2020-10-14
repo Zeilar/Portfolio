@@ -27,7 +27,7 @@ export default function Menu() {
                 width: '35%',
             },
             '@media (max-width: 768px)': {
-                width: '50%',
+                width: '65%',
             },
         },
         open: {
@@ -184,6 +184,16 @@ export default function Menu() {
         location.href = '/api/logout';
     }
 
+    function close() {
+        setOpen(false);
+    }
+    
+    function closeOnNavLink() {
+        if (window.innerWidth <= 1200) {
+            setOpen(false);
+        }
+    }
+
     async function login() {
         const args = {
             method: 'POST',
@@ -221,7 +231,7 @@ export default function Menu() {
             </button>
 
             <nav className={`${classes.navbar} ${!open ? 'closed' : ''}`}>
-                <button className={classes.close} onClick={() => setOpen(false)} title="Close">
+                <button className={classes.close} onClick={close} title="Close">
                     <Icon className={classes.icon} path={mdiClose} />
                 </button>
 
@@ -258,17 +268,17 @@ export default function Menu() {
 
                 <ul className={classes.navlist}>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/" exact>
+                        <NavLink className={classes.navlink} onClick={closeOnNavLink} to="/" exact>
                             Home
                         </NavLink>
                     </li>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/about">
+                        <NavLink className={classes.navlink} onClick={closeOnNavLink} to="/about">
                             About me
                         </NavLink>
                     </li>
                     <li className={classes.navitem}>
-                        <NavLink className={classes.navlink} to="/cases">
+                        <NavLink className={classes.navlink} onClick={closeOnNavLink} to="/cases">
                             Cases
                         </NavLink>
                     </li>
