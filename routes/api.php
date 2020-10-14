@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-Route::resource('projects', ProjectsController::class)->except(['edit', 'create', 'show']);
 Route::resource('fields', FieldsController::class)->except(['edit', 'create', 'store', 'destroy']);
+Route::resource('projects', ProjectsController::class)->except(['edit', 'create', 'show']);
 
 Route::post('/login', function(Request $request) {
     $json = json_decode($request->getContent());
