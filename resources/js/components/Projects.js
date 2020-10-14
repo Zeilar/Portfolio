@@ -37,7 +37,8 @@ export default function Projects() {
             marginTop: 20,
         },
         addInput: {
-            borderBottom: '2px solid var(--color-text)',
+            border: '2px solid var(--color-text)',
+            backgroundColor: 'rgb(30, 30, 30)',
             transition: 'all 0.1s linear',
             textAlign: 'center',
             padding: [5, 0],
@@ -88,6 +89,9 @@ export default function Projects() {
 
         const args = {
             method: 'POST',
+            headers: {
+                'X-CSRF-Token': document.querySelector('[name=_token]').getAttribute('content'),
+            },
             body: JSON.stringify({
                 title: projectTitle.current?.value,
                 link: projectLink.current?.value,
@@ -127,8 +131,8 @@ export default function Projects() {
             {
                 adding &&
                     <div className={classes.addInputs}>
-                        <input className={classes.addInput} ref={projectTitle} placeholder="Title" onKeyDown={submitProject} required />
-                        <input className={classes.addInput} ref={projectLink} placeholder="https://example.com" onKeyDown={submitProject} required />
+                        <input className={classes.addInput} ref={projectTitle} placeholder="Title" onKeyDown={submitProject} autoFocus />
+                        <input className={classes.addInput} ref={projectLink} placeholder="https://example.com" onKeyDown={submitProject} />
                         <div className={classes.buttons}>
                             <button className={`${classes.addSubmit} adminBtn`} onClick={addProject}>
                                 <Icon path={mdiCheck} />

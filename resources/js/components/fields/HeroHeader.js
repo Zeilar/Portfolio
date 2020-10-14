@@ -1,9 +1,9 @@
-import { mdiPen, mdiClose, mdiCheck, mdiTrashCan } from '@mdi/js';
 import React, { useState, useRef, useEffect } from 'react';
+import { mdiPen, mdiClose, mdiCheck } from '@mdi/js';
 import { createUseStyles } from 'react-jss';
 import Icon from '@mdi/react';
 
-export default function HeroHeader({ field, saveField, deleteField, setHeaderLoaded }) {
+export default function HeroHeader({ field, saveField, setHeaderLoaded }) {
     const styles = createUseStyles({
         '@keyframes fadeIn': {
             from: {
@@ -71,6 +71,11 @@ export default function HeroHeader({ field, saveField, deleteField, setHeaderLoa
         }
     }
 
+    function onEdit() {
+        setEdit(true);
+        input.current.focus();
+    }
+
     useEffect(() => {
         if (field) setHeaderLoaded(true);
     }, [setHeaderLoaded, field]);
@@ -85,7 +90,7 @@ export default function HeroHeader({ field, saveField, deleteField, setHeaderLoa
                     <div className={classes.buttons}>
                         {
                             !edit && user &&
-                                <button className={`${classes.edit} adminBtn`} onClick={() => setEdit(true)}>
+                                <button className={`${classes.edit} adminBtn`} onClick={onEdit}>
                                     <Icon className={classes.editIcon} path={mdiPen} />
                                 </button>
                         }
@@ -99,12 +104,6 @@ export default function HeroHeader({ field, saveField, deleteField, setHeaderLoa
                                         <Icon path={mdiClose} />
                                     </button>
                                 </>
-                        }
-                        {
-                            field && user &&
-                                <button className={`${classes.delete} adminBtn delete`} onClick={() => deleteField(setEdit)}>
-                                    <Icon path={mdiTrashCan} />
-                                </button>
                         }
                     </div>
             }

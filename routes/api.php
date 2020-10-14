@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 
 Route::resource('projects', ProjectsController::class)->except(['edit', 'create', 'show']);
-Route::resource('fields', FieldsController::class)->except(['edit', 'create', 'store']);
+Route::resource('fields', FieldsController::class)->except(['edit', 'create', 'store', 'destroy']);
 
 Route::post('/login', function(Request $request) {
     $json = json_decode($request->getContent());
@@ -22,12 +22,12 @@ Route::post('/login', function(Request $request) {
         return response(['field' => 'password', 'message' => 'Incorrect password', 'success' => false]);
     }
 });
+
 Route::get('logout', function() {
     Auth::logout();
     return redirect('/');
 });
-Route::get('authenticate', function(Request $request) {
-    // Auth::loginUsingId(1);
-    return dd($request->user(), auth()->user());
+
+Route::get('authenticate', function() {
     return response('', auth()->user() ? 200 : 401);
 });

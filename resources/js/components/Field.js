@@ -9,6 +9,9 @@ export default function Field({ render: Render, fieldName, props }) {
 
         const args = {
             method: 'PUT',
+            headers: {
+                'X-CSRF-Token': document.querySelector('[name=_token]').getAttribute('content'),
+            },
             body: JSON.stringify({
                 name: field.name ?? fieldName,
                 content: input,
@@ -30,27 +33,9 @@ export default function Field({ render: Render, fieldName, props }) {
             .catch(error => console.log(error));
     }
 
-    async function deleteField(setEdit) {
-        if (!confirm('Delete this field?')) return;
-
-        await fetch(`/api/fields/${field.id ?? 0}`, { method: 'DELETE' })
-            .then(response => {
-                if (response.status === 200) {
-                    return response.json();
-                }
-            })
-            .then(content => {
-                if (content) {
-                    setField(false);
-                    setEdit(false);
-                }
-            })
-            .catch(error => console.log(error));
-    }
-
     useEffect(() => {
         if (field == null) getField(fieldName, setField);
     }, [field, setField, getField]);
 
-    return <Render {...props} field={field} saveField={save} deleteField={deleteField} />;
+    return <Render {...props} field={field} saveField={save} />;
 }

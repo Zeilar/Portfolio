@@ -54,17 +54,4 @@ class FieldsController extends Controller
         ]);
         return response()->json($field);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Field  $field
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Field $field)
-    {
-        if (!auth()->user()) return abort(401);
-
-        return response()->json($field->delete());
-    }
 }

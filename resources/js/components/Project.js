@@ -51,7 +51,14 @@ export default function Project({ project, setProjects }) {
     async function deleteProject() {
         if (!confirm('Delete project?')) return;
 
-        await fetch(`/api/projects/${project.id}`, { method: 'DELETE' })
+        const args = {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-Token': document.querySelector('[name=_token]').getAttribute('content'),
+            },
+        };
+
+        await fetch(`/api/projects/${project.id}`, args)
             .then(response => {
                 if (response.status === 200) {
                     return response.json();

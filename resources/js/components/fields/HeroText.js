@@ -1,9 +1,9 @@
-import { mdiPen, mdiClose, mdiCheck, mdiTrashCan } from '@mdi/js';
 import React, { useState, useRef, useEffect } from 'react';
+import { mdiPen, mdiClose, mdiCheck } from '@mdi/js';
 import { createUseStyles } from 'react-jss';
 import Icon from '@mdi/react';
 
-export default function HeroText({ field, saveField, deleteField, setTextLoaded }) {
+export default function HeroText({ field, saveField, setTextLoaded }) {
     const styles = createUseStyles({
         field: {
             textShadow: '0 0 2px black',
@@ -93,12 +93,6 @@ export default function HeroText({ field, saveField, deleteField, setTextLoaded 
                                         <Icon path={mdiClose} />
                                     </button>
                                 </>
-                        }
-                        {
-                            field && user &&
-                                <button className={`${classes.delete} adminBtn delete`} onClick={() => deleteField(setEdit)}>
-                                    <Icon path={mdiTrashCan} />
-                                </button>
                         }
                     </div>
             }

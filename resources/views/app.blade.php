@@ -23,10 +23,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ str_replace('_', ' ', config('app.name', 'Philip Angelin')) }}</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <meta name="_token" content="{{ csrf_token() }}">
     </head>
     <body>
-        {{-- @php Auth::loginUsingId(1) @endphp --}}
-        {{ var_dump(auth()->user()) }}
         <main id="app">{{-- React served --}}</main>
         <script src="{{ asset('js/app.js') }}"></script>
     </body>

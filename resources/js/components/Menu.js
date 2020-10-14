@@ -1,4 +1,4 @@
-import { mdiClose, mdiChevronDoubleRight, mdiExitToApp, mdiMenu } from '@mdi/js';
+import { mdiClose, mdiExitToApp, mdiMenu } from '@mdi/js';
 import React, { useState, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { NavLink } from 'react-router-dom';
@@ -11,7 +11,7 @@ export default function Menu() {
         },
         navbar: {
             backgroundColor: 'rgb(15, 15, 15)',
-            transition: 'all 0.35s linear',
+            transition: 'all 0.25s linear',
             boxShadow: '0 0 8px 0 black',
             position: 'relative',
             position: 'fixed',
@@ -187,6 +187,9 @@ export default function Menu() {
     async function login() {
         const args = {
             method: 'POST',
+            headers: {
+                'X-CSRF-Token': document.querySelector('[name=_token]').getAttribute('content'),
+            },
             body: JSON.stringify({
                 username: username.current.value,
                 password: password.current.value,
