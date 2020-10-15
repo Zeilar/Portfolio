@@ -16,8 +16,8 @@ if (mix.inProduction()) {
 	mix.copyDirectory('tests', 'dist/portfolio/tests');
 
 	// Public
-	mix.copyDirectory('public/css', 'dist/portfolio.angelin.dev/css');
-	mix.copyDirectory('public/js', 'dist/portfolio.angelin.dev/js');
+	mix.copyDirectory('public/css', 'dist/public_html/css');
+	mix.copyDirectory('public/js', 'dist/public_html/js');
 }
 
 mix.webpackConfig({
