@@ -65,6 +65,23 @@ export default function HeroText({ field, saveField, setTextLoaded }) {
         }
     }
 
+    function buttonsView() {
+        if (!user) return;
+
+        return edit
+            ? <>
+                <button className={`${classes.save} adminBtn save`} onClick={() => saveField(input.current.innerHTML, setEdit)}>
+                    <Icon path={mdiCheck} />
+                </button>
+                <button className={`${classes.cancel} adminBtn cancel`} onClick={() => setEdit(false)}>
+                    <Icon path={mdiClose} />
+                </button>
+            </>
+            : <button className={`${classes.edit} adminBtn`} onClick={() => setEdit(true)}>
+                <Icon className={classes.editIcon} path={mdiPen} />
+            </button>
+    }
+
     useEffect(() => {
         if (field) setTextLoaded(true);
     }, [setTextLoaded, field]);
@@ -72,30 +89,11 @@ export default function HeroText({ field, saveField, setTextLoaded }) {
     return (
         <div className={classes.field}>
             <p className={classes.input} ref={input} onKeyDown={saveOnEnter} contentEditable={edit} suppressContentEditableWarning>
-                {field?.content}
+                { field?.content }
             </p>
-            {
-                field &&
-                    <div className={classes.buttons}>
-                        {
-                            !edit && user &&
-                                <button className={`${classes.edit} adminBtn`} onClick={() => setEdit(true)}>
-                                    <Icon className={classes.editIcon} path={mdiPen} />
-                                </button>
-                        }
-                        {
-                            edit && user &&
-                                <>
-                                    <button className={`${classes.save} adminBtn save`} onClick={() => saveField(input.current.innerHTML, setEdit)}>
-                                        <Icon path={mdiCheck} />
-                                    </button>
-                                    <button className={`${classes.cancel} adminBtn cancel`} onClick={() => setEdit(false)}>
-                                        <Icon path={mdiClose} />
-                                    </button>
-                                </>
-                        }
-                    </div>
-            }
+            <div className={classes.buttons}>
+                { buttonsView() }
+            </div>
         </div>
     );
 }

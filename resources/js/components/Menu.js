@@ -194,6 +194,31 @@ export default function Menu() {
         }
     }
 
+    function loginView() {
+        return user
+            ? <button className={classes.logout} onClick={logout}>
+                <span>Logout</span>
+                <Icon className={classes.logoutIcon} path={mdiExitToApp} />
+            </button>
+            : <>
+                <p className={classes.loginHeader}>
+                    Login
+                </p>
+
+                <form className={classes.inputs} onSubmit={loginSubmit}>
+                    {usernameError && <p className={classes.error}>{usernameError}</p>}
+                    <input className={classes.input} type="text" placeholder="Username" ref={username} />
+
+                    {passwordError && <p className={classes.error}>{passwordError}</p>}
+                    <input className={classes.input} type="password" placeholder="Password" ref={password} />
+
+                    <button className={classes.loginSubmit} onClick={loginSubmit}>
+                        Login
+                    </button>
+                </form>
+            </>
+    }
+
     async function login() {
         const args = {
             method: 'POST',
@@ -236,32 +261,7 @@ export default function Menu() {
                 </button>
 
                 <div className={classes.login}>
-                    {
-                        user
-                            ? <>
-                                <button className={classes.logout} onClick={logout}>
-                                    <span>Logout</span>
-                                    <Icon className={classes.logoutIcon} path={mdiExitToApp} />
-                                </button>
-                            </>
-                            : <>
-                                <p className={classes.loginHeader}>
-                                    Login
-                                </p>
-
-                                <form className={classes.inputs} onSubmit={loginSubmit}>
-                                    {usernameError && <p className={classes.error}>{usernameError}</p>}
-                                    <input className={classes.input} type="text" placeholder="Username" ref={username} />
-
-                                    {passwordError && <p className={classes.error}>{passwordError}</p>}
-                                    <input className={classes.input} type="password" placeholder="Password" ref={password} />
-
-                                    <button className={classes.loginSubmit} onClick={loginSubmit}>
-                                        Login
-                                    </button>
-                                </form>
-                            </>
-                    }
+                    { loginView() }
                 </div>
 
                 <hr className={classes.divider} />
