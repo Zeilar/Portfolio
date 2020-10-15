@@ -114,6 +114,27 @@ export default function Projects() {
             });
     }
 
+    function addView() {
+        if (!user) return;
+
+        return adding
+            ? <div className={classes.addInputs}>
+                <input className={classes.addInput} ref={projectTitle} placeholder="Title" onKeyDown={submitProject} autoFocus />
+                <input className={classes.addInput} ref={projectLink} placeholder="https://example.com" onKeyDown={submitProject} />
+                <div className={classes.buttons}>
+                    <button className={`${classes.addSubmit} adminBtn`} onClick={addProject}>
+                        <Icon path={mdiCheck} />
+                    </button>
+                    <button className={`${classes.addCancel} adminBtn cancel`} onClick={() => setAdding(false)}>
+                        <Icon path={mdiClose} />
+                    </button>
+                </div>
+            </div>
+            : <button className={`${classes.add} adminBtn`} onClick={() => setAdding(true)}>
+                <Icon path={mdiPlus} />
+            </button>
+    }
+
     useEffect(() => {
         if (projects == null) getProjects();
     }, [projects, getProjects]);
@@ -128,28 +149,7 @@ export default function Projects() {
 
             {projects?.map(project => <Project project={project} setProjects={setProjects} key={project.id} />)}
 
-            {
-                adding &&
-                    <div className={classes.addInputs}>
-                        <input className={classes.addInput} ref={projectTitle} placeholder="Title" onKeyDown={submitProject} autoFocus />
-                        <input className={classes.addInput} ref={projectLink} placeholder="https://example.com" onKeyDown={submitProject} />
-                        <div className={classes.buttons}>
-                            <button className={`${classes.addSubmit} adminBtn`} onClick={addProject}>
-                                <Icon path={mdiCheck} />
-                            </button>
-                            <button className={`${classes.addCancel} adminBtn cancel`} onClick={() => setAdding(false)}>
-                                <Icon path={mdiClose} />
-                            </button>
-                        </div>
-                    </div>
-            }
-
-            {
-                user && !adding &&
-                    <button className={`${classes.add} adminBtn`} onClick={() => setAdding(true)}>
-                        <Icon path={mdiPlus} />
-                    </button>
-            }
+            { addView() }
         </div>
     );
 }
