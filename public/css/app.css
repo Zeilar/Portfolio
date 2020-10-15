@@ -210,21 +210,24 @@ button {
   border: 0;
 }
 
-button.adminBtn {
+.adminBtn {
+  transition: all 0.05s linear;
   color: var(--color-primary);
-  height: 2rem;
-  width: 2rem;
+  border-radius: 5px;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 5px;
 }
 
-button.save {
-  color: var(--color-secondary);
+.adminBtn:hover {
+  background-color: #323232;
 }
 
-button.cancel {
+.adminBtn.cancel {
   color: #7f0000;
 }
 
-button.delete {
+.adminBtn.delete {
   color: red;
 }
 

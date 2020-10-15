@@ -15,15 +15,18 @@ button {
     cursor: pointer;
     outline: 0;
     border: 0;
+}
 
-    &.adminBtn {
-        color: var(--color-primary);
-        height: 2rem;
-        width: 2rem;
-    }
+.adminBtn {
+    transition: all 0.05s linear;
+    color: var(--color-primary);
+    border-radius: 5px;
+    height: 2.5rem;
+    width: 2.5rem;
+    padding: 5px;
 
-    &.save {
-        color: var(--color-secondary);
+    &:hover {
+        background-color: rgb(50, 50, 50);
     }
 
     &.cancel {

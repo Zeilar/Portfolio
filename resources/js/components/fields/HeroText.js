@@ -70,7 +70,7 @@ export default function HeroText({ field, saveField, setTextLoaded }) {
 
         return edit
             ? <>
-                <button className={`${classes.save} adminBtn save`} onClick={() => saveField(input.current.innerHTML, setEdit)}>
+                <button className={`${classes.save} adminBtn`} onClick={() => saveField(input.current.innerHTML, setEdit)}>
                     <Icon path={mdiCheck} />
                 </button>
                 <button className={`${classes.cancel} adminBtn cancel`} onClick={() => setEdit(false)}>

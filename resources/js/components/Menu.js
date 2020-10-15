@@ -184,8 +184,12 @@ export default function Menu() {
         location.href = '/api/logout';
     }
 
-    function close() {
+    function closeNav() {
         setOpen(false);
+    }
+
+    function openNav() {
+        setOpen(true);
     }
     
     function closeOnNavLink() {
@@ -251,12 +255,12 @@ export default function Menu() {
 
     return (
         <header className={classes.header}>
-            <button className={classes.open} onClick={() => setOpen(true)} title="Open">
+            <button className={classes.open} onClick={openNav} title="Open">
                 <Icon className={classes.icon} path={mdiMenu} />
             </button>
 
             <nav className={`${classes.navbar} ${!open ? 'closed' : ''}`}>
-                <button className={classes.close} onClick={close} title="Close">
+                <button className={classes.close} onClick={closeNav} title="Close">
                     <Icon className={classes.icon} path={mdiClose} />
                 </button>
 
