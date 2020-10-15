@@ -14,7 +14,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        return response()->json(Project::all());
+        return response(Project::all());
     }
 
     /**
@@ -34,7 +34,7 @@ class ProjectsController extends Controller
             'link' => $json->link,
         ]);
 
-        return response()->json($project);
+        return response($project);
     }
 
     /**
@@ -62,6 +62,6 @@ class ProjectsController extends Controller
         $projectId = $project->id;
         $project->delete();
 
-        return response()->json($projectId);
+        return response($projectId);
     }
 }

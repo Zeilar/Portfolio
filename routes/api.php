@@ -16,11 +16,9 @@ Route::post('/login', function(Request $request) {
         return response(['success' => true]);
     }
 
-    if (!User::where('username', $json->username)->first()) {
-        return response(['field' => 'username', 'message' => 'User does not exist', 'success' => false]);
-    } else {
-        return response(['field' => 'password', 'message' => 'Incorrect password', 'success' => false]);
-    }
+    return !User::where('username', $json->username)->first()
+        ? response(['field' => 'username', 'message' => 'User does not exist', 'success' => false])
+        : response(['field' => 'password', 'message' => 'Incorrect password', 'success' => false]);
 });
 
 Route::get('logout', function() {

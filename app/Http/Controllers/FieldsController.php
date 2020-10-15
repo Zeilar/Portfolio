@@ -14,7 +14,7 @@ class FieldsController extends Controller
      */
     public function index()
     {
-        return response()->json(Field::all());
+        return response(Field::all());
     }
 
     /**
@@ -52,6 +52,6 @@ class FieldsController extends Controller
             'content' => $json->content,
             'name' => $json->name,
         ]);
-        return response()->json($field);
+        return response($field);
     }
 }
