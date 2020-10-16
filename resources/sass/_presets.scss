@@ -39,6 +39,11 @@ img,
     user-select: none;
 }
 
+img,
+svg {
+    min-width: 20px;
+}
+
 img {
     max-width: 100%;
 }

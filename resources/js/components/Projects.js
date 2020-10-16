@@ -141,9 +141,9 @@ export default function Projects() {
 
     return (
         <div className={classes.projects}>
-            <h2 className={classes.header}>
+            <h1 className={classes.header}>
                 Projects
-            </h2>
+            </h1>
 
             {!projects?.length && <Icon className={classes.loading} path={mdiLoading} spin={1} />}
 

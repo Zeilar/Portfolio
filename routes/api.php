@@ -27,5 +27,5 @@ Route::get('logout', function() {
 });
 
 Route::get('authenticate', function() {
-    return response('', auth()->user() ? 200 : 401);
+    return response()->json('', auth()->user() ? 200 : 401);
 });

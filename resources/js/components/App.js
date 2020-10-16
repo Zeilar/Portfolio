@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { authenticate } from '../functions';
 import React, { useEffect } from 'react';
 import NotFound from './NotFound';
+import Footer from './Footer';
 import Index from './Index';
 import Menu from './Menu';
 
@@ -17,6 +18,7 @@ export default function App() {
                 <Route path="/" exact component={Index} />
                 <Route component={NotFound} />
             </Switch>
+            <Footer />
         </Router>
     );
 }

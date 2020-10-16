@@ -3,10 +3,6 @@ import { createUseStyles } from 'react-jss';
 import { mdiTrashCan } from '@mdi/js';
 import Icon from '@mdi/react';
 
-
-// import test from '@storage/medias/linkedin.svg';
-// console.log(test);
-
 export default function Project({ project, setProjects }) {
     const styles = createUseStyles({
         project: {

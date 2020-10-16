@@ -1,7 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { createUseStyles } from 'react-jss';
 import Projects from './Projects';
 import Header from './Hero';
+import React from 'react';
 
 export default function Index() {
     return (
