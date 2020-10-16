@@ -286,6 +286,11 @@ export default function Menu() {
                             Cases
                         </NavLink>
                     </li>
+                    <li className={classes.navitem}>
+                        <a className={classes.navlink} href="/storage/CV.pdf" target="_blank">
+                            CV
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </header>
