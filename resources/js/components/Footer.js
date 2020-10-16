@@ -26,12 +26,12 @@ export default function Footer() {
             marginTop: 20,
         },
         media: {
-            transition: 'all 0.25s linear',
+            transition: 'all 0.15s linear',
             display: 'flex',
             margin: 15,
             width: 30,
             '&:hover': {
-                transform: 'scale(1.1)',
+                transform: 'scale(1.15)',
             },
         },
         mediaIcon: {

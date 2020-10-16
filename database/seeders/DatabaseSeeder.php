@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Field::create([
             'name'    => 'heroText',
-            'content' => 'I\'m a fullstack web developer. That means I can work in every stack of the production, be it frontend or backend. I currently excel at the frameworks; Laravel, Node, React and Vue. Take a look around to learn more about me and my works.',
+            'content' => 'I\'m a fullstack web developer. That means I can work in every stack of the production, be it frontend or backend, to deliver a fully fledged application. Currently, I excel at the frameworks; Laravel, React and Vue. Take a look around to learn more about me and my works.',
         ]);
     }
 }
