@@ -5,13 +5,13 @@ export default function Footer() {
     const styles = createUseStyles({
         footer: {
             justifyContent: 'center',
+            fontFamily: 'Montserrat',
             flexDirection: 'column',
             alignItems: 'center',
             display: 'flex',
             padding: 30,
         },
         header: {
-            fontFamily: 'Montserrat',
             fontSize: '2rem',
         },
         divider: {
